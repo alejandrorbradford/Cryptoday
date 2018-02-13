@@ -23,7 +23,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView!.addSubview(refresher)
         
         let realm = try! Realm()
-        news = (realm.objects(News.self).toArray() as! [News]).sorted { $0.creationDate < $1.creationDate }
+        news = (realm.objects(News.self).toArray() as! [News]).sorted { $0.publishedDate < $1.publishedDate }
         fetchData()
     }
     
@@ -33,7 +33,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             guard let strongSelf = self else { return }
             guard let news = news else { return }
             // TODO: Error handling
-            strongSelf.news = news.sorted { $0.creationDate < $1.creationDate }
+            strongSelf.news = news.sorted { $0.publishedDate < $1.publishedDate }
             strongSelf.collectionView.reloadData()
             if strongSelf.refresher.isRefreshing { strongSelf.refresher.endRefreshing() }
         }

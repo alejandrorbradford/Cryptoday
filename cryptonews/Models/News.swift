@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class News: Object {
-    @objc dynamic var creationDate = Date(timeIntervalSince1970: 1)
+    @objc dynamic var publishedDate = Date(timeIntervalSince1970: 1)
     @objc dynamic var author = ""
     @objc dynamic var title = ""
     @objc dynamic var shortDescription = ""
@@ -40,11 +40,11 @@ class News: Object {
         news.shortDescription = dictionary["description"] as! String
         news.url = dictionary["url"] as! String
         news.imageUrl = dictionary["urlToImage"] as! String
-        let creationDateString = dictionary["publishedAt"] as! String
-        news.newsID = creationDateString
+        let publishedDateString = dictionary["publishedAt"] as! String
+        news.newsID = publishedDateString
         let dateFormatter = ISO8601DateFormatter()
-        let creationDate = dateFormatter.date(from:creationDateString)!
-        news.creationDate = creationDate
+        let creationDate = dateFormatter.date(from:publishedDateString)!
+        news.publishedDate = creationDate
         return news
     }
     
