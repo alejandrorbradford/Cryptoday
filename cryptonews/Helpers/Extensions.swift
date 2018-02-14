@@ -6,8 +6,8 @@ extension Results {
     }
 }
 
-extension UILabel {
-    func textDropShadow() {
+extension UIView {
+    func applyShadow() {
         self.layer.masksToBounds = false
         self.layer.shadowRadius = 8.0
         self.layer.shadowOpacity = 2.0
