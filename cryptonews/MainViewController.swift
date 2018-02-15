@@ -22,7 +22,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         collectionView!.addSubview(refresher)
         
-        
         let realm = try! Realm()
         news = (realm.objects(News.self).toArray() as! [News]).sorted { $0.publishedDate > $1.publishedDate }
         fetchData()
@@ -57,11 +56,20 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 28
+        return 24
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-34, height: 359)
+        var titleHeight: CGFloat = 57.5
+        let count = news[indexPath.row].title.count
+        if count > 20 {
+            titleHeight = titleHeight * 2
+        } else if count > 60 {
+            titleHeight = titleHeight * 3
+        } else if count > 90 {
+            titleHeight = titleHeight * 4
+        }
+        return CGSize(width: UIScreen.main.bounds.width-34, height: 291.5+titleHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -73,19 +81,15 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var publisher: UILabel!
+    @IBOutlet var shadowView: UIView!
+    @IBOutlet var secondShadowView: UIView!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.cornerRadius = 4
-        
-        DispatchQueue.main.async {
-        let maskPath = UIBezierPath.init(roundedRect: self.imageView.bounds, byRoundingCorners:[.bottomRight, .bottomLeft], cornerRadii: CGSize.init(width: 4, height: 4))
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.imageView.bounds
-        maskLayer.path = maskPath.cgPath
-        self.imageView.layer.mask = maskLayer
+        self.layer.cornerRadius = 0
         self.imageView.layer.masksToBounds = true
-        }
+        
         
         // shadow
         self.layer.shadowColor = UIColor.black.cgColor
@@ -93,7 +97,17 @@ class MainCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 4.0
         self.layer.masksToBounds = false
-    
+        
+        shadowView.layer.shadowColor = UIColor.darkGray.cgColor
+        shadowView.layer.shadowOffset = CGSize(width: -1, height: -2)
+        shadowView.layer.shadowOpacity = 0.3
+        shadowView.layer.shadowRadius = 1.4
+        
+        secondShadowView.layer.shadowColor = UIColor.black.cgColor
+        secondShadowView.layer.shadowOffset = CGSize(width: 1, height: 2)
+        secondShadowView.layer.shadowOpacity = 0.3
+        secondShadowView.layer.shadowRadius = 1.7
+
+        
     }
-    
 }

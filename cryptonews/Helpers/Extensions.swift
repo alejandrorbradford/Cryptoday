@@ -6,12 +6,3 @@ extension Results {
     }
 }
 
-extension UIView {
-    func applyShadow() {
-        self.layer.masksToBounds = false
-        self.layer.shadowRadius = 8.0
-        self.layer.shadowOpacity = 2.0
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 1, height: 2)
-    }
-}
