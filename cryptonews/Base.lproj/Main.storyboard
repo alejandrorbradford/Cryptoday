@@ -41,23 +41,32 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="64.5" id="QFK-yP-3Sz"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOR-Cl-F4r">
-                                                    <rect key="frame" x="0.0" y="138" width="290" height="221"/>
+                                                    <rect key="frame" x="0.0" y="127.5" width="290" height="160.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="221" id="euZ-N8-cQ2"/>
+                                                        <constraint firstAttribute="height" constant="160.5" id="Ta3-ci-JOv"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CCN News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LO-X0-Jyt">
-                                                    <rect key="frame" x="20" y="99" width="95" height="23"/>
+                                                    <rect key="frame" x="20" y="92.5" width="84.5" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="23" id="7OM-wD-NkN"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June 7, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgV-6A-fqS">
+                                                    <rect key="frame" x="20" y="312" width="86.5" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="23" id="kdV-TN-jiN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -68,11 +77,13 @@
                                             <constraint firstAttribute="trailing" secondItem="jU4-rd-joK" secondAttribute="trailing" constant="16" id="1Zx-r6-xmg"/>
                                             <constraint firstItem="jOR-Cl-F4r" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leading" id="EMq-yA-2eP"/>
                                             <constraint firstItem="9LO-X0-Jyt" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leadingMargin" constant="12" id="G0n-Es-Zhu"/>
-                                            <constraint firstAttribute="bottom" secondItem="jOR-Cl-F4r" secondAttribute="bottom" id="J6N-0r-hfn"/>
                                             <constraint firstItem="jU4-rd-joK" firstAttribute="top" secondItem="q45-4T-xaA" secondAttribute="topMargin" constant="16" id="Mw6-8A-ACK"/>
-                                            <constraint firstItem="jOR-Cl-F4r" firstAttribute="top" secondItem="9LO-X0-Jyt" secondAttribute="bottom" constant="16" id="fqR-qH-jRu"/>
-                                            <constraint firstItem="9LO-X0-Jyt" firstAttribute="top" secondItem="jU4-rd-joK" secondAttribute="bottom" constant="10.5" id="iWt-8i-g4n"/>
+                                            <constraint firstItem="CgV-6A-fqS" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leadingMargin" constant="12" id="Rb7-Aj-BDr"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="CgV-6A-fqS" secondAttribute="bottom" constant="16" id="Ryj-4F-1P3"/>
+                                            <constraint firstItem="jOR-Cl-F4r" firstAttribute="top" secondItem="9LO-X0-Jyt" secondAttribute="bottom" constant="12" id="bvQ-dN-MdS"/>
+                                            <constraint firstItem="9LO-X0-Jyt" firstAttribute="top" secondItem="jU4-rd-joK" secondAttribute="bottom" constant="4" id="iWt-8i-g4n"/>
                                             <constraint firstAttribute="trailing" secondItem="jOR-Cl-F4r" secondAttribute="trailing" id="lpZ-SC-4Do"/>
+                                            <constraint firstItem="CgV-6A-fqS" firstAttribute="top" secondItem="jOR-Cl-F4r" secondAttribute="bottom" constant="24" id="tiK-Ft-lpV"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="jOR-Cl-F4r" id="t6W-IN-4o7"/>

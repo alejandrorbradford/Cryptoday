@@ -15,7 +15,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.delegate = self
         collectionView.dataSource = self
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "News"
+        title = "Latest News"
         refresher = UIRefreshControl()
         collectionView!.alwaysBounceVertical = true
         refresher.tintColor = .gray
@@ -24,7 +24,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         
         let realm = try! Realm()
-        news = (realm.objects(News.self).toArray() as! [News]).sorted { $0.publishedDate < $1.publishedDate }
+        news = (realm.objects(News.self).toArray() as! [News]).sorted { $0.publishedDate > $1.publishedDate }
         fetchData()
     }
     
@@ -36,7 +36,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             // TODO: Error handling
             let newNews = news.filter { !strongSelf.news.contains($0) }
             strongSelf.news.append(contentsOf: newNews)
-            strongSelf.news = strongSelf.news.sorted { $0.publishedDate < $1.publishedDate }
+            strongSelf.news = strongSelf.news.sorted { $0.publishedDate > $1.publishedDate }
             strongSelf.collectionView.reloadData()
             if strongSelf.refresher.isRefreshing { strongSelf.refresher.endRefreshing() }
         }
@@ -76,10 +76,10 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 4
         
         DispatchQueue.main.async {
-        let maskPath = UIBezierPath.init(roundedRect: self.imageView.bounds, byRoundingCorners:[.bottomRight, .bottomLeft], cornerRadii: CGSize.init(width: 10.0, height: 10.0))
+        let maskPath = UIBezierPath.init(roundedRect: self.imageView.bounds, byRoundingCorners:[.bottomRight, .bottomLeft], cornerRadii: CGSize.init(width: 4, height: 4))
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.imageView.bounds
         maskLayer.path = maskPath.cgPath
@@ -90,7 +90,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         // shadow
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowOpacity = 0.4
+        self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 4.0
         self.layer.masksToBounds = false
     
