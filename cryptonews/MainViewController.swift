@@ -101,7 +101,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         shadowView.layer.shadowColor = UIColor.darkGray.cgColor
         shadowView.layer.shadowOffset = CGSize(width: -1, height: -2)
         shadowView.layer.shadowOpacity = 0.3
-        shadowView.layer.shadowRadius = 1.4
+        shadowView.layer.shadowRadius = 1.7
         
         secondShadowView.layer.shadowColor = UIColor.black.cgColor
         secondShadowView.layer.shadowOffset = CGSize(width: 1, height: 2)

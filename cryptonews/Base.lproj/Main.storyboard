@@ -43,24 +43,24 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June 7, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgV-6A-fqS">
-                                                    <rect key="frame" x="20" y="306" width="93.5" height="23"/>
+                                                    <rect key="frame" x="20" y="306" width="90" height="23"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="23" id="kdV-TN-jiN"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwW-U9-Kgl">
-                                                    <rect key="frame" x="0.0" y="118" width="291" height="169.5"/>
+                                                    <rect key="frame" x="0.0" y="118" width="291" height="163.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mh0-Ks-afn">
-                                                    <rect key="frame" x="0.0" y="118" width="291" height="169.5"/>
+                                                    <rect key="frame" x="0.0" y="118" width="291" height="163.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOR-Cl-F4r">
-                                                    <rect key="frame" x="0.0" y="118.5" width="291" height="169.5"/>
+                                                    <rect key="frame" x="0.0" y="118.5" width="291" height="163.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CCN News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LO-X0-Jyt">
                                                     <rect key="frame" x="20" y="79.5" width="89" height="23"/>
@@ -71,6 +71,14 @@
                                                     <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXj-d5-Dct">
+                                                    <rect key="frame" x="246" y="305.5" width="25" height="30"/>
+                                                    <state key="normal" image="share-icon"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-Up-W9k">
+                                                    <rect key="frame" x="197" y="300.5" width="25" height="34"/>
+                                                    <state key="normal" image="bookmark-icon"/>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,18 +90,22 @@
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="centerX" secondItem="JwW-U9-Kgl" secondAttribute="centerX" id="D1Q-u8-mvC"/>
                                             <constraint firstItem="jOR-Cl-F4r" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leading" id="EMq-yA-2eP"/>
                                             <constraint firstItem="9LO-X0-Jyt" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leadingMargin" constant="12" id="G0n-Es-Zhu"/>
+                                            <constraint firstItem="KXj-d5-Dct" firstAttribute="leading" secondItem="1sf-Up-W9k" secondAttribute="trailing" constant="24" id="J4h-kq-noF"/>
                                             <constraint firstItem="jU4-rd-joK" firstAttribute="top" secondItem="q45-4T-xaA" secondAttribute="topMargin" constant="6" id="Mw6-8A-ACK"/>
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="centerY" secondItem="JwW-U9-Kgl" secondAttribute="centerY" id="RR4-J2-Roq"/>
                                             <constraint firstItem="CgV-6A-fqS" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leadingMargin" constant="12" id="Rb7-Aj-BDr"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CgV-6A-fqS" secondAttribute="trailingMargin" id="Rn3-W1-Dh6"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="KXj-d5-Dct" secondAttribute="trailing" constant="12" id="Skj-ck-jtT"/>
                                             <constraint firstItem="jOR-Cl-F4r" firstAttribute="top" secondItem="9LO-X0-Jyt" secondAttribute="bottom" constant="16" id="bvQ-dN-MdS"/>
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="width" secondItem="JwW-U9-Kgl" secondAttribute="width" id="d0X-VQ-XwD"/>
                                             <constraint firstItem="9LO-X0-Jyt" firstAttribute="top" secondItem="jU4-rd-joK" secondAttribute="bottom" constant="8" id="iWt-8i-g4n"/>
+                                            <constraint firstItem="KXj-d5-Dct" firstAttribute="centerY" secondItem="CgV-6A-fqS" secondAttribute="centerY" constant="3" id="j5D-KU-flv"/>
                                             <constraint firstItem="JwW-U9-Kgl" firstAttribute="width" secondItem="jOR-Cl-F4r" secondAttribute="width" id="lDA-K9-nmG"/>
                                             <constraint firstAttribute="trailing" secondItem="jOR-Cl-F4r" secondAttribute="trailing" id="lpZ-SC-4Do"/>
+                                            <constraint firstItem="1sf-Up-W9k" firstAttribute="centerY" secondItem="CgV-6A-fqS" secondAttribute="centerY" id="qPz-Ml-CQX"/>
                                             <constraint firstItem="JwW-U9-Kgl" firstAttribute="centerX" secondItem="jOR-Cl-F4r" secondAttribute="centerX" id="r9a-br-my0"/>
                                             <constraint firstItem="JwW-U9-Kgl" firstAttribute="height" secondItem="jOR-Cl-F4r" secondAttribute="height" id="t47-jM-rDc"/>
-                                            <constraint firstItem="CgV-6A-fqS" firstAttribute="top" secondItem="jOR-Cl-F4r" secondAttribute="bottom" constant="18" id="tiK-Ft-lpV"/>
+                                            <constraint firstItem="CgV-6A-fqS" firstAttribute="top" secondItem="jOR-Cl-F4r" secondAttribute="bottom" constant="24" id="tiK-Ft-lpV"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="CgV-6A-fqS" secondAttribute="bottom" constant="12" id="usi-ic-Onc"/>
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="height" secondItem="JwW-U9-Kgl" secondAttribute="height" id="vRB-zJ-zkM"/>
                                         </constraints>
@@ -151,4 +163,8 @@
             <point key="canvasLocation" x="-529" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bookmark-icon" width="25" height="34"/>
+        <image name="share-icon" width="25" height="30"/>
+    </resources>
 </document>
