@@ -72,11 +72,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXj-d5-Dct">
-                                                    <rect key="frame" x="246" y="305.5" width="25" height="30"/>
+                                                    <rect key="frame" x="251" y="304" width="20" height="27"/>
                                                     <state key="normal" image="share-icon"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-Up-W9k">
-                                                    <rect key="frame" x="197" y="300.5" width="25" height="34"/>
+                                                    <rect key="frame" x="207" y="305.5" width="20" height="24"/>
                                                     <state key="normal" image="bookmark-icon"/>
                                                 </button>
                                             </subviews>
@@ -99,7 +99,7 @@
                                             <constraint firstItem="jOR-Cl-F4r" firstAttribute="top" secondItem="9LO-X0-Jyt" secondAttribute="bottom" constant="16" id="bvQ-dN-MdS"/>
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="width" secondItem="JwW-U9-Kgl" secondAttribute="width" id="d0X-VQ-XwD"/>
                                             <constraint firstItem="9LO-X0-Jyt" firstAttribute="top" secondItem="jU4-rd-joK" secondAttribute="bottom" constant="8" id="iWt-8i-g4n"/>
-                                            <constraint firstItem="KXj-d5-Dct" firstAttribute="centerY" secondItem="CgV-6A-fqS" secondAttribute="centerY" constant="3" id="j5D-KU-flv"/>
+                                            <constraint firstItem="KXj-d5-Dct" firstAttribute="centerY" secondItem="CgV-6A-fqS" secondAttribute="centerY" id="j5D-KU-flv"/>
                                             <constraint firstItem="JwW-U9-Kgl" firstAttribute="width" secondItem="jOR-Cl-F4r" secondAttribute="width" id="lDA-K9-nmG"/>
                                             <constraint firstAttribute="trailing" secondItem="jOR-Cl-F4r" secondAttribute="trailing" id="lpZ-SC-4Do"/>
                                             <constraint firstItem="1sf-Up-W9k" firstAttribute="centerY" secondItem="CgV-6A-fqS" secondAttribute="centerY" id="qPz-Ml-CQX"/>
@@ -164,7 +164,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark-icon" width="25" height="34"/>
-        <image name="share-icon" width="25" height="30"/>
+        <image name="bookmark-icon" width="20" height="24"/>
+        <image name="share-icon" width="20" height="27"/>
     </resources>
 </document>
