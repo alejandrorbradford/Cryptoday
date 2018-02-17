@@ -16,6 +16,14 @@ extension UIViewController {
         newsDetailVC.news = news
         navigationController?.pushViewController(newsDetailVC, animated: true)
     }
+    
+    func showWebViewController(url: String) {
+        guard navigationController != nil else { print("Can't push to vc"); return }
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let webVC = storyBoard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        webVC.urlString = url
+        navigationController?.pushViewController(webVC, animated: true)
+    }
 }
 
 extension UIColor {

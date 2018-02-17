@@ -52,4 +52,8 @@ class NewsDetailViewController: UIViewController {
         }
         DispatchQueue.main.async { self.view.layoutIfNeeded() }
     }
+    
+    @IBAction func didTapVisitSite(_ sender: UIBarButtonItem) {
+        showWebViewController(url: news.url)
+    }
 }

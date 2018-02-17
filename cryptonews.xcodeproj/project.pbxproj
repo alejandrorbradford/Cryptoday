@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE6EB3B1FDB304F498B682BF /* Pods_cryptonews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B6F96E1B6651B2A7038D89 /* Pods_cryptonews.framework */; };
+		F303D8D720383EB500CC0C8F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303D8D620383EB500CC0C8F /* WebViewController.swift */; };
 		F30B88032032D4060043A641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30B88022032D4060043A641 /* AppDelegate.swift */; };
 		F30B88052032D4060043A641 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30B88042032D4060043A641 /* MainViewController.swift */; };
 		F30B88082032D4060043A641 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F30B88062032D4060043A641 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		58B6F96E1B6651B2A7038D89 /* Pods_cryptonews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptonews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9273D9E5BEC2F71484AF6F29 /* Pods-cryptonews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptonews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cryptonews/Pods-cryptonews.debug.xcconfig"; sourceTree = "<group>"; };
 		DE89A9FFBC4D2E0800FF6F99 /* Pods-cryptonews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptonews.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptonews/Pods-cryptonews.release.xcconfig"; sourceTree = "<group>"; };
+		F303D8D620383EB500CC0C8F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F30B87FF2032D4060043A641 /* cryptonews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptonews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30B88022032D4060043A641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F30B88042032D4060043A641 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				F338E5512032DC1400BE4A31 /* Models */,
 				F30B88042032D4060043A641 /* MainViewController.swift */,
 				F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */,
+				F303D8D620383EB500CC0C8F /* WebViewController.swift */,
 				F30B88022032D4060043A641 /* AppDelegate.swift */,
 				F30B88062032D4060043A641 /* Main.storyboard */,
 				F30B88092032D4060043A641 /* Assets.xcassets */,
@@ -251,6 +254,7 @@
 				F338E5572032E5A600BE4A31 /* Extensions.swift in Sources */,
 				F30B88052032D4060043A641 /* MainViewController.swift in Sources */,
 				F338E5502032DA6300BE4A31 /* APIEngine.swift in Sources */,
+				F303D8D720383EB500CC0C8F /* WebViewController.swift in Sources */,
 				F338E5542032DC4100BE4A31 /* News.swift in Sources */,
 				F30B88032032D4060043A641 /* AppDelegate.swift in Sources */,
 			);
