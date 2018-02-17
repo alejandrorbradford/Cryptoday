@@ -147,17 +147,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin reaches all time high" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9b-Je-iIC">
-                                <rect key="frame" x="16" y="32" width="343" height="29"/>
+                                <rect key="frame" x="16" y="38" width="343" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paul Giamatti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnB-C8-O6o">
+                                <rect key="frame" x="16" y="75" width="110" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="KEX-HG-8rz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygk-2g-hTx">
+                                <rect key="frame" x="16" y="106" width="343" height="440"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="j9b-Je-iIC" firstAttribute="top" secondItem="RQt-Rt-2W0" secondAttribute="top" constant="12" id="1Rw-7V-1yk"/>
+                            <constraint firstItem="j9b-Je-iIC" firstAttribute="top" secondItem="RQt-Rt-2W0" secondAttribute="top" constant="18" id="1Rw-7V-1yk"/>
+                            <constraint firstItem="ygk-2g-hTx" firstAttribute="leading" secondItem="RQt-Rt-2W0" secondAttribute="leading" constant="16" id="Im4-YB-8d9"/>
                             <constraint firstItem="j9b-Je-iIC" firstAttribute="leading" secondItem="RQt-Rt-2W0" secondAttribute="leading" constant="16" id="O6i-9e-bak"/>
+                            <constraint firstItem="RQt-Rt-2W0" firstAttribute="bottom" secondItem="ygk-2g-hTx" secondAttribute="bottom" constant="121" id="Sfj-fk-eHL"/>
                             <constraint firstItem="RQt-Rt-2W0" firstAttribute="trailing" secondItem="j9b-Je-iIC" secondAttribute="trailing" constant="16" id="UHE-Oy-Fdz"/>
+                            <constraint firstItem="RQt-Rt-2W0" firstAttribute="trailing" secondItem="ygk-2g-hTx" secondAttribute="trailing" constant="16" id="adx-gS-jgK"/>
+                            <constraint firstItem="KnB-C8-O6o" firstAttribute="top" secondItem="j9b-Je-iIC" secondAttribute="bottom" constant="8" id="bhU-Dc-R8W"/>
+                            <constraint firstItem="KnB-C8-O6o" firstAttribute="leading" secondItem="RQt-Rt-2W0" secondAttribute="leading" constant="16" id="ecq-7r-ZI7"/>
+                            <constraint firstItem="ygk-2g-hTx" firstAttribute="top" secondItem="KnB-C8-O6o" secondAttribute="bottom" constant="8" id="egh-rB-0WO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RQt-Rt-2W0"/>
                     </view>

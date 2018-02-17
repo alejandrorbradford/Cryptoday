@@ -69,7 +69,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-34, height: 349)
+        return CGSize(width: UIScreen.main.bounds.width-34, height: 380)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -95,7 +95,6 @@ class MainCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 0
         self.imageView.layer.masksToBounds = true
         
-        
         // shadow
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
@@ -112,7 +111,10 @@ class MainCollectionViewCell: UICollectionViewCell {
         secondShadowView.layer.shadowOffset = CGSize(width: 1, height: 2)
         secondShadowView.layer.shadowOpacity = 0.3
         secondShadowView.layer.shadowRadius = 1.7
-
-        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
     }
 }
