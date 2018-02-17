@@ -16,6 +16,7 @@
 		F338E5502032DA6300BE4A31 /* APIEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338E54F2032DA6300BE4A31 /* APIEngine.swift */; };
 		F338E5542032DC4100BE4A31 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338E5532032DC4100BE4A31 /* News.swift */; };
 		F338E5572032E5A600BE4A31 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338E5562032E5A600BE4A31 /* Extensions.swift */; };
+		F35AF9AB20380641002995F7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F338E54F2032DA6300BE4A31 /* APIEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEngine.swift; sourceTree = "<group>"; };
 		F338E5532032DC4100BE4A31 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F338E5562032E5A600BE4A31 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				F338E5522032DC3100BE4A31 /* API */,
 				F338E5512032DC1400BE4A31 /* Models */,
 				F30B88042032D4060043A641 /* MainViewController.swift */,
+				F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */,
 				F30B88022032D4060043A641 /* AppDelegate.swift */,
 				F30B88062032D4060043A641 /* Main.storyboard */,
 				F30B88092032D4060043A641 /* Assets.xcassets */,
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F35AF9AB20380641002995F7 /* NewsDetailViewController.swift in Sources */,
 				F338E5572032E5A600BE4A31 /* Extensions.swift in Sources */,
 				F30B88052032D4060043A641 /* MainViewController.swift in Sources */,
 				F338E5502032DA6300BE4A31 /* APIEngine.swift in Sources */,

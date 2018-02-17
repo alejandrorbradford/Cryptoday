@@ -23,7 +23,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView!.addSubview(refresher)
         
         let bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "bookmark-icon-filled"), style: .plain, target: self, action: #selector(self.handleTouchOnBookmarks))
-        bookmarkButton.tintColor = UIColor.init(red: 30/255.0, green: 30/255.0, blue: 30/255.0, alpha: 1)
+        bookmarkButton.tintColor = UIColor.cryptoBlack()
         self.navigationItem.rightBarButtonItem = bookmarkButton
         
         let realm = try! Realm()
@@ -46,6 +46,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // MARK: Collection view
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let news = self.news[indexPath.row]
+        showNewsDetails(news: news)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return news.count
     }

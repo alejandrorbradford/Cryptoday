@@ -138,6 +138,37 @@
             </objects>
             <point key="canvasLocation" x="260" y="132.68365817091455"/>
         </scene>
+        <!--News Detail View Controller-->
+        <scene sceneID="VN3-oP-6if">
+            <objects>
+                <viewController storyboardIdentifier="NewsDetailViewController" id="hy4-tS-ytW" customClass="NewsDetailViewController" customModule="cryptonews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FjM-hG-3fo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin reaches all time high" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9b-Je-iIC">
+                                <rect key="frame" x="16" y="32" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j9b-Je-iIC" firstAttribute="top" secondItem="RQt-Rt-2W0" secondAttribute="top" constant="12" id="1Rw-7V-1yk"/>
+                            <constraint firstItem="j9b-Je-iIC" firstAttribute="leading" secondItem="RQt-Rt-2W0" secondAttribute="leading" constant="16" id="O6i-9e-bak"/>
+                            <constraint firstItem="RQt-Rt-2W0" firstAttribute="trailing" secondItem="j9b-Je-iIC" secondAttribute="trailing" constant="16" id="UHE-Oy-Fdz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RQt-Rt-2W0"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="j9b-Je-iIC" id="aUo-Rg-Sgz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WkO-lH-bgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="132.68365817091455"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="li2-4s-vqy">
             <objects>
