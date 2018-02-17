@@ -22,6 +22,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         collectionView!.addSubview(refresher)
         
+        let bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "bookmark-icon-filled"), style: .plain, target: self, action: #selector(self.handleTouchOnBookmarks))
+        bookmarkButton.tintColor = UIColor.init(red: 30/255.0, green: 30/255.0, blue: 30/255.0, alpha: 1)
+        self.navigationItem.rightBarButtonItem = bookmarkButton
+        
         let realm = try! Realm()
         news = (realm.objects(News.self).toArray() as! [News]).sorted { $0.publishedDate > $1.publishedDate }
         fetchData()
@@ -60,20 +64,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var titleHeight: CGFloat = 57.5
-        let count = news[indexPath.row].title.count
-        if count > 20 {
-            titleHeight = titleHeight * 2
-        } else if count > 60 {
-            titleHeight = titleHeight * 3
-        } else if count > 90 {
-            titleHeight = titleHeight * 4
-        }
-        return CGSize(width: UIScreen.main.bounds.width-34, height: 291.5+titleHeight)
+        return CGSize(width: UIScreen.main.bounds.width-34, height: 349)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 4, bottom: 24, right: 4)
+    }
+    
+    // MARK: Actions
+    @objc func handleTouchOnBookmarks() {
+        
     }
 }
 
