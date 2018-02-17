@@ -9,7 +9,6 @@ target 'cryptonews' do
   pod 'Alamofire', '~> 4.5'
   pod 'RealmSwift'
   pod 'Imaginary'
-
-
+  pod 'Kanna', :git => 'https://github.com/tid-kijyun/Kanna.git', :branch => 'feature/v4.0.0'
 
 end

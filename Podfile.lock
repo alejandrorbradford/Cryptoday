@@ -3,6 +3,7 @@ PODS:
   - Cache (4.1.2)
   - Imaginary (3.0.3):
     - Cache (~> 4.0)
+  - Kanna (4.0.0)
   - Realm (3.1.0):
     - Realm/Headers (= 3.1.0)
   - Realm/Headers (3.1.0)
@@ -12,15 +13,27 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - Imaginary
+  - Kanna (from `https://github.com/tid-kijyun/Kanna.git`, branch `feature/v4.0.0`)
   - RealmSwift
+
+EXTERNAL SOURCES:
+  Kanna:
+    :branch: feature/v4.0.0
+    :git: https://github.com/tid-kijyun/Kanna.git
+
+CHECKOUT OPTIONS:
+  Kanna:
+    :commit: d14801345da8998d4da4a071006fb7746de3d1eb
+    :git: https://github.com/tid-kijyun/Kanna.git
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Cache: bd0233fc688b5e83a27bcd87807db7e6f23adcc5
   Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
+  Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
   Realm: '09513d7c054678d65cd02ce09871f805b0d758ac'
   RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
 
-PODFILE CHECKSUM: 10a15c403559ba75e5378c4da05e6ec6bf10400e
+PODFILE CHECKSUM: 8810ab8a979479a0598447b03cf475011b295a2b
 
 COCOAPODS: 1.2.1

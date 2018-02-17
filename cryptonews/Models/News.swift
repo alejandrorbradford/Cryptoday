@@ -17,6 +17,7 @@ class News: Object {
     @objc dynamic var url = ""
     @objc dynamic var imageUrl = ""
     @objc dynamic var newsID = ""
+    var paragraphs = List<String>()
     
     override static func primaryKey() -> String? {
         return "newsID"
