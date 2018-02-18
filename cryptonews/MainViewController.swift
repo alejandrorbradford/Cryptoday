@@ -2,11 +2,16 @@ import UIKit
 import RealmSwift
 import Imaginary
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+protocol MainCollectionViewCellDelegate: class {
+    func mainCelldidTappedOnBookmarks()
+}
+
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MainCollectionViewCellDelegate {
     
     @IBOutlet var collectionView: UICollectionView!
     
-    var refresher:UIRefreshControl!
+    var refresher: UIRefreshControl!
+    var bookmarkButton: UIBarButtonItem!
     
     var news = [News]()
     
@@ -22,7 +27,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         collectionView!.addSubview(refresher)
         
-        let bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "bookmark-icon-filled"), style: .plain, target: self, action: #selector(self.handleTouchOnBookmarks))
+        self.bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "bookmark-icon-filled"), style: .plain, target: self, action: #selector(self.handleTouchOnBookmarks))
         bookmarkButton.tintColor = UIColor.cryptoBlack()
         self.navigationItem.rightBarButtonItem = bookmarkButton
         
@@ -58,6 +63,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
         let news = self.news[indexPath.row]
+        cell.delegate = self
         cell.news = news
         return cell
     }
@@ -78,6 +84,14 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @objc func handleTouchOnBookmarks() {
         
     }
+    
+    // MARK: Delegates
+    func mainCelldidTappedOnBookmarks() {
+        navigationItem.rightBarButtonItem = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            self.navigationItem.rightBarButtonItem = self.bookmarkButton
+        }
+    }
 }
 
 class MainCollectionViewCell: UICollectionViewCell {
@@ -87,7 +101,8 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet var shadowView: UIView!
     @IBOutlet var secondShadowView: UIView!
     @IBOutlet var bookmarkButton: UIButton!
-    
+
+    weak var delegate: MainCollectionViewCellDelegate?
     var news: News? { didSet { self.updateUI() } }
     
     override func awakeFromNib() {
@@ -133,6 +148,7 @@ class MainCollectionViewCell: UICollectionViewCell {
             let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.prepare()
             generator.impactOccurred()
+            delegate?.mainCelldidTappedOnBookmarks()
         } catch {
             print(error)
         }
