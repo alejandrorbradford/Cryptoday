@@ -18,6 +18,7 @@ class News: Object {
     @objc dynamic var imageUrl = ""
     @objc dynamic var newsID = ""
     var paragraphs = List<String>()
+    var isBookmarked = false
     
     override static func primaryKey() -> String? {
         return "newsID"
@@ -29,8 +30,12 @@ class News: Object {
             let news = createNewsFromDictionary(dictionary: dictionary)
             newsArray.append(news)
         }
-        let realm = try! Realm()
-        try! realm.write { realm.add(newsArray, update: true) }
+        do {
+            let realm = try Realm()
+            try realm.write { realm.add(newsArray, update: true) }
+        } catch {
+            print(error)
+        }
         return newsArray
     }
     

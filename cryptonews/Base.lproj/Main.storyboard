@@ -74,10 +74,16 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXj-d5-Dct">
                                                     <rect key="frame" x="251" y="304" width="20" height="27"/>
                                                     <state key="normal" image="share-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapOnShare:" destination="q45-4T-xaA" eventType="touchUpInside" id="cKc-hz-D67"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-Up-W9k">
                                                     <rect key="frame" x="207" y="305.5" width="20" height="24"/>
                                                     <state key="normal" image="bookmark-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapOnBookmark:" destination="q45-4T-xaA" eventType="touchUpInside" id="IsH-Be-Fk7"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -110,6 +116,7 @@
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="height" secondItem="JwW-U9-Kgl" secondAttribute="height" id="vRB-zJ-zkM"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="1sf-Up-W9k" id="n6v-TV-BAr"/>
                                             <outlet property="imageView" destination="jOR-Cl-F4r" id="t6W-IN-4o7"/>
                                             <outlet property="publisher" destination="9LO-X0-Jyt" id="ssg-ol-vaO"/>
                                             <outlet property="secondShadowView" destination="Mh0-Ks-afn" id="BWr-gP-erH"/>

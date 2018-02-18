@@ -58,9 +58,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
         let news = self.news[indexPath.row]
-        cell.titleLabel.text = news.title
-        cell.publisher.text = news.author
-        if let url = URL(string: news.imageUrl) { cell.imageView.setImage(url: url) }
+        cell.news = news
         return cell
     }
     
@@ -88,7 +86,9 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet var publisher: UILabel!
     @IBOutlet var shadowView: UIView!
     @IBOutlet var secondShadowView: UIView!
-
+    @IBOutlet var bookmarkButton: UIButton!
+    
+    var news: News? { didSet { self.updateUI() } }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -116,5 +116,26 @@ class MainCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+    }
+    
+    func updateUI() {
+        titleLabel.text = news!.title
+        publisher.text = news!.author
+        if let url = URL(string: news!.imageUrl) { imageView.setImage(url: url) }
+        bookmarkButton.setImage(news!.isBookmarked ? #imageLiteral(resourceName: "bookmark-icon-filled") : #imageLiteral(resourceName: "bookmark-icon"), for: .normal)
+    }
+    
+    @IBAction func didTapOnBookmark(_ sender: UIButton) {
+        do {
+            let realm = try Realm()
+            try realm.write { news!.isBookmarked = !news!.isBookmarked }
+            updateUI()
+        } catch {
+            print(error)
+        }
+    }
+    
+    @IBAction func didTapOnShare(_ sender: UIButton) {
+        
     }
 }
