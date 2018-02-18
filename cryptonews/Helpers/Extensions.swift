@@ -24,6 +24,13 @@ extension UIViewController {
         webVC.urlString = url
         navigationController?.pushViewController(webVC, animated: true)
     }
+    
+    func showBookmarks() {
+        guard navigationController != nil else { print("Can't push to vc"); return }
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let bookmarksVC = storyBoard.instantiateViewController(withIdentifier: "BookmarksViewController") as! BookmarksViewController
+        navigationController?.pushViewController(bookmarksVC, animated: true)
+    }
 }
 
 extension UIColor {

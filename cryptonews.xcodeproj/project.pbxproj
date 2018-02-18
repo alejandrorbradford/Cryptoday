@@ -18,6 +18,7 @@
 		F338E5542032DC4100BE4A31 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338E5532032DC4100BE4A31 /* News.swift */; };
 		F338E5572032E5A600BE4A31 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338E5562032E5A600BE4A31 /* Extensions.swift */; };
 		F35AF9AB20380641002995F7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */; };
+		F3C5CA4920396E3C00842CF3 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5CA4820396E3C00842CF3 /* BookmarksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F338E5532032DC4100BE4A31 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F338E5562032E5A600BE4A31 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		F3C5CA4820396E3C00842CF3 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,12 +90,10 @@
 		F30B88012032D4060043A641 /* cryptonews */ = {
 			isa = PBXGroup;
 			children = (
+				F3C5CA4720396DB000842CF3 /* ViewControllers */,
 				F338E5552032E59800BE4A31 /* Helpers */,
 				F338E5522032DC3100BE4A31 /* API */,
 				F338E5512032DC1400BE4A31 /* Models */,
-				F30B88042032D4060043A641 /* MainViewController.swift */,
-				F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */,
-				F303D8D620383EB500CC0C8F /* WebViewController.swift */,
 				F30B88022032D4060043A641 /* AppDelegate.swift */,
 				F30B88062032D4060043A641 /* Main.storyboard */,
 				F30B88092032D4060043A641 /* Assets.xcassets */,
@@ -125,6 +125,17 @@
 				F338E5562032E5A600BE4A31 /* Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F3C5CA4720396DB000842CF3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F30B88042032D4060043A641 /* MainViewController.swift */,
+				F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */,
+				F303D8D620383EB500CC0C8F /* WebViewController.swift */,
+				F3C5CA4820396E3C00842CF3 /* BookmarksViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C5CA4920396E3C00842CF3 /* BookmarksViewController.swift in Sources */,
 				F35AF9AB20380641002995F7 /* NewsDetailViewController.swift in Sources */,
 				F338E5572032E5A600BE4A31 /* Extensions.swift in Sources */,
 				F30B88052032D4060043A641 /* MainViewController.swift in Sources */,

@@ -82,7 +82,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: Actions
     @objc func handleTouchOnBookmarks() {
-        
+        showBookmarks()
     }
     
     // MARK: Delegates
@@ -141,6 +141,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func didTapOnBookmark(_ sender: UIButton) {
+        if news!.paragraphs.count == 0 { APIEngine.getNewsBodyForNews(news: news!, completion: { _,_ in }) }
         do {
             let realm = try Realm()
             try realm.write { news!.isBookmarked = !news!.isBookmarked; realm.add(news!, update: true) }

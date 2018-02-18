@@ -154,6 +154,73 @@
             </objects>
             <point key="canvasLocation" x="260" y="132.68365817091455"/>
         </scene>
+        <!--Bookmarks View Controller-->
+        <scene sceneID="ZKY-Fg-OVc">
+            <objects>
+                <viewController storyboardIdentifier="BookmarksViewController" id="RNa-e7-Xfp" customClass="BookmarksViewController" customModule="cryptonews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lHL-gl-OCU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5eb-qH-Qi1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BookmarkTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookmarkTableViewCell" rowHeight="140" id="a7K-oe-utl" customClass="BookmarkTableViewCell" customModule="cryptonews" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a7K-oe-utl" id="cpv-kp-xvB">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="139.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin reaches all time high" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pK-3W-qum">
+                                                    <rect key="frame" x="31" y="27" width="287" height="57.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CCN News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qze-xT-Osk">
+                                                    <rect key="frame" x="31" y="92.5" width="89" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Qze-xT-Osk" firstAttribute="leading" secondItem="cpv-kp-xvB" secondAttribute="leadingMargin" constant="16" id="AQx-eN-JpM"/>
+                                                <constraint firstItem="Qze-xT-Osk" firstAttribute="top" secondItem="6pK-3W-qum" secondAttribute="bottom" constant="8" id="Hkc-Of-nlL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Qze-xT-Osk" secondAttribute="bottom" constant="15" id="eyd-sg-8uS"/>
+                                                <constraint firstItem="6pK-3W-qum" firstAttribute="leading" secondItem="cpv-kp-xvB" secondAttribute="leadingMargin" constant="16" id="k8j-bX-OOW"/>
+                                                <constraint firstItem="6pK-3W-qum" firstAttribute="top" secondItem="cpv-kp-xvB" secondAttribute="topMargin" constant="16" id="oiD-il-8FJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6pK-3W-qum" secondAttribute="trailing" constant="16" id="tJx-5P-bDb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="newsSourceLabel" destination="Qze-xT-Osk" id="kRz-eg-OjO"/>
+                                            <outlet property="newsTitleLabel" destination="6pK-3W-qum" id="XhE-Ji-C14"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5eb-qH-Qi1" firstAttribute="top" secondItem="lHL-gl-OCU" secondAttribute="top" id="1Xe-7g-7G5"/>
+                            <constraint firstItem="5eb-qH-Qi1" firstAttribute="trailing" secondItem="YWW-RL-Iwd" secondAttribute="trailing" id="cdS-jD-v9X"/>
+                            <constraint firstItem="5eb-qH-Qi1" firstAttribute="bottom" secondItem="YWW-RL-Iwd" secondAttribute="bottom" id="yH0-ae-3eL"/>
+                            <constraint firstItem="5eb-qH-Qi1" firstAttribute="leading" secondItem="YWW-RL-Iwd" secondAttribute="leading" id="z9U-YT-DFt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YWW-RL-Iwd"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="5eb-qH-Qi1" id="iMx-VL-1QO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcz-d0-0Ob" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="-531.18440779610194"/>
+        </scene>
         <!--Title-->
         <scene sceneID="VN3-oP-6if">
             <objects>
