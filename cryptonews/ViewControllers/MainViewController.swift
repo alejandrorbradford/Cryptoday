@@ -107,7 +107,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.cornerRadius = 0
+        self.layer.cornerRadius = 2
         self.imageView.layer.masksToBounds = true
         
         // shadow
