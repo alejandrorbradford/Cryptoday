@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -71,15 +72,23 @@
                                                     <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXj-d5-Dct">
-                                                    <rect key="frame" x="251" y="304" width="20" height="27"/>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXj-d5-Dct">
+                                                    <rect key="frame" x="242" y="292.5" width="37" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="IEv-Xi-bhy"/>
+                                                        <constraint firstAttribute="width" secondItem="KXj-d5-Dct" secondAttribute="height" multiplier="20:27" id="m6t-OZ-842"/>
+                                                    </constraints>
                                                     <state key="normal" image="share-icon"/>
                                                     <connections>
                                                         <action selector="didTapOnShare:" destination="q45-4T-xaA" eventType="touchUpInside" id="cKc-hz-D67"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-Up-W9k">
-                                                    <rect key="frame" x="207" y="305.5" width="20" height="24"/>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-Up-W9k">
+                                                    <rect key="frame" x="192" y="292.5" width="42" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="La6-zz-5zv"/>
+                                                        <constraint firstAttribute="width" secondItem="1sf-Up-W9k" secondAttribute="height" multiplier="5:6" id="lFn-pM-GLJ"/>
+                                                    </constraints>
                                                     <state key="normal" image="bookmark-icon"/>
                                                     <connections>
                                                         <action selector="didTapOnBookmark:" destination="q45-4T-xaA" eventType="touchUpInside" id="IsH-Be-Fk7"/>
@@ -96,12 +105,12 @@
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="centerX" secondItem="JwW-U9-Kgl" secondAttribute="centerX" id="D1Q-u8-mvC"/>
                                             <constraint firstItem="jOR-Cl-F4r" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leading" id="EMq-yA-2eP"/>
                                             <constraint firstItem="9LO-X0-Jyt" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leadingMargin" constant="12" id="G0n-Es-Zhu"/>
-                                            <constraint firstItem="KXj-d5-Dct" firstAttribute="leading" secondItem="1sf-Up-W9k" secondAttribute="trailing" constant="24" id="J4h-kq-noF"/>
+                                            <constraint firstItem="KXj-d5-Dct" firstAttribute="leading" secondItem="1sf-Up-W9k" secondAttribute="trailing" constant="8" id="J4h-kq-noF"/>
                                             <constraint firstItem="jU4-rd-joK" firstAttribute="top" secondItem="q45-4T-xaA" secondAttribute="topMargin" constant="6" id="Mw6-8A-ACK"/>
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="centerY" secondItem="JwW-U9-Kgl" secondAttribute="centerY" id="RR4-J2-Roq"/>
                                             <constraint firstItem="CgV-6A-fqS" firstAttribute="leading" secondItem="q45-4T-xaA" secondAttribute="leadingMargin" constant="12" id="Rb7-Aj-BDr"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CgV-6A-fqS" secondAttribute="trailingMargin" id="Rn3-W1-Dh6"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="KXj-d5-Dct" secondAttribute="trailing" constant="12" id="Skj-ck-jtT"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="KXj-d5-Dct" secondAttribute="trailing" constant="4" id="Skj-ck-jtT"/>
                                             <constraint firstItem="jOR-Cl-F4r" firstAttribute="top" secondItem="9LO-X0-Jyt" secondAttribute="bottom" constant="16" id="bvQ-dN-MdS"/>
                                             <constraint firstItem="Mh0-Ks-afn" firstAttribute="width" secondItem="JwW-U9-Kgl" secondAttribute="width" id="d0X-VQ-XwD"/>
                                             <constraint firstItem="9LO-X0-Jyt" firstAttribute="top" secondItem="jU4-rd-joK" secondAttribute="bottom" constant="8" id="iWt-8i-g4n"/>

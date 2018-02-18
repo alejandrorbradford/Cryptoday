@@ -128,8 +128,11 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBAction func didTapOnBookmark(_ sender: UIButton) {
         do {
             let realm = try Realm()
-            try realm.write { news!.isBookmarked = !news!.isBookmarked }
+            try realm.write { news!.isBookmarked = !news!.isBookmarked; realm.add(news!, update: true) }
             updateUI()
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.prepare()
+            generator.impactOccurred()
         } catch {
             print(error)
         }
