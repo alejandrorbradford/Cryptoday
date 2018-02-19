@@ -19,6 +19,7 @@
 		F338E5572032E5A600BE4A31 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F338E5562032E5A600BE4A31 /* Extensions.swift */; };
 		F35AF9AB20380641002995F7 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */; };
 		F3C5CA4920396E3C00842CF3 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5CA4820396E3C00842CF3 /* BookmarksViewController.swift */; };
+		F3F53AC9203ACD4500B55DC0 /* cryptonews.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = F3F53AC8203ACBA400B55DC0 /* cryptonews.entitlements */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F338E5562032E5A600BE4A31 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F35AF9AA20380641002995F7 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		F3C5CA4820396E3C00842CF3 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		F3F53AC8203ACBA400B55DC0 /* cryptonews.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cryptonews.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		F30B88012032D4060043A641 /* cryptonews */ = {
 			isa = PBXGroup;
 			children = (
+				F3F53AC8203ACBA400B55DC0 /* cryptonews.entitlements */,
 				F3C5CA4720396DB000842CF3 /* ViewControllers */,
 				F338E5552032E59800BE4A31 /* Helpers */,
 				F338E5522032DC3100BE4A31 /* API */,
@@ -174,6 +177,11 @@
 					F30B87FE2032D4060043A641 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -200,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3F53AC9203ACD4500B55DC0 /* cryptonews.entitlements in Resources */,
 				F30B880D2032D4060043A641 /* LaunchScreen.storyboard in Resources */,
 				F30B880A2032D4060043A641 /* Assets.xcassets in Resources */,
 				F30B88082032D4060043A641 /* Main.storyboard in Resources */,
@@ -406,12 +415,15 @@
 			baseConfigurationReference = 9273D9E5BEC2F71484AF6F29 /* Pods-cryptonews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cryptonews/cryptonews.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UH9F5Z9972;
 				INFOPLIST_FILE = cryptonews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryptoday.cryptoday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -422,12 +434,15 @@
 			baseConfigurationReference = DE89A9FFBC4D2E0800FF6F99 /* Pods-cryptonews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = cryptonews/cryptonews.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UH9F5Z9972;
 				INFOPLIST_FILE = cryptonews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryptoday.cryptoday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

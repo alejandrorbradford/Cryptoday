@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.6.0)
+  - Branch (0.22.5):
+    - Branch/Core (= 0.22.5)
+  - Branch/Core (0.22.5)
   - Cache (4.1.2)
   - Imaginary (3.0.3):
     - Cache (~> 4.0)
@@ -12,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - Branch
   - Imaginary
   - Kanna (from `https://github.com/tid-kijyun/Kanna.git`, branch `feature/v4.0.0`)
   - RealmSwift
@@ -28,12 +32,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Branch: 4f0482418d99e77d15b0e6065ef216c10e24797b
   Cache: bd0233fc688b5e83a27bcd87807db7e6f23adcc5
   Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
   Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
   Realm: '09513d7c054678d65cd02ce09871f805b0d758ac'
   RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
 
-PODFILE CHECKSUM: 8810ab8a979479a0598447b03cf475011b295a2b
+PODFILE CHECKSUM: e3df7c058a190af289c180289af5405bd7e0c978
 
 COCOAPODS: 1.2.1

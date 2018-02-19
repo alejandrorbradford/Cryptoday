@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import Branch
 
 class News: Object {
     @objc dynamic var publishedDate = Date(timeIntervalSince1970: 1)
@@ -71,6 +72,19 @@ class News: Object {
         }
     }
     
+    func toDictionary() -> [String:Any] {
+        var dictionary = [String:Any]()
+        dictionary["author"] = self.author
+        dictionary["title"] = self.title
+        dictionary["description"] = self.shortDescription
+        dictionary["url"] = self.url
+        dictionary["urlToImage"] = self.imageUrl
+        let dateFormatter = ISO8601DateFormatter()
+        let creationDate = dateFormatter.string(from:self.publishedDate)
+        dictionary["publishedAt"] = creationDate
+        return dictionary
+    }
+    
     func bookmark() {
         do {
             let realm = try Realm()
@@ -78,5 +92,14 @@ class News: Object {
         } catch {
             print(error)
         }
+    }
+    
+    func generateBranchIOLink() -> String? {
+        let branch = Branch.getInstance()
+        let wrapper = [ "news_object" : self.toDictionary() ]
+        if let shortLink = branch?.getShortURL(withParams: wrapper) {
+            return shortLink
+        }
+        return nil
     }
 }

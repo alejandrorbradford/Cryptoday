@@ -151,6 +151,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func didTapOnShare(_ sender: UIButton) {
-        
+        let link = news?.generateBranchIOLink()
+        print(link)
     }
 }
