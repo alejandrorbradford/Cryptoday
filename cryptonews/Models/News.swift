@@ -70,4 +70,13 @@ class News: Object {
             return nil
         }
     }
+    
+    func bookmark() {
+        do {
+            let realm = try Realm()
+            try realm.write { self.isBookmarked = !self.isBookmarked; realm.add(self, update: true) }
+        } catch {
+            print(error)
+        }
+    }
 }

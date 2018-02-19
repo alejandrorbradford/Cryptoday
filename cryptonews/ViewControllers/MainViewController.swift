@@ -142,17 +142,12 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     @IBAction func didTapOnBookmark(_ sender: UIButton) {
         if news!.paragraphs.count == 0 { APIEngine.getNewsBodyForNews(news: news!, completion: { _,_ in }) }
-        do {
-            let realm = try Realm()
-            try realm.write { news!.isBookmarked = !news!.isBookmarked; realm.add(news!, update: true) }
-            updateUI()
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.prepare()
-            generator.impactOccurred()
-            delegate?.mainCelldidTappedOnBookmarks()
-        } catch {
-            print(error)
-        }
+        self.news!.bookmark()
+        updateUI()
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.prepare()
+        generator.impactOccurred()
+        delegate?.mainCelldidTappedOnBookmarks()
     }
     
     @IBAction func didTapOnShare(_ sender: UIButton) {
