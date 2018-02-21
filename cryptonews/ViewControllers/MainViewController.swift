@@ -9,6 +9,7 @@ protocol MainCollectionViewCellDelegate: class {
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MainCollectionViewCellDelegate {
     
+    @IBOutlet var horizontalCollectionView: UICollectionView!
     @IBOutlet var collectionView: UICollectionView!
     
     var refresher: UIRefreshControl!
@@ -20,6 +21,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        horizontalCollectionView.delegate = self
+        horizontalCollectionView.dataSource = self
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Latest News"
         refresher = UIRefreshControl()
@@ -27,6 +30,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refresher.tintColor = .gray
         refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         collectionView!.addSubview(refresher)
+        horizontalCollectionView.layer.shadowColor = UIColor.black.cgColor
+        horizontalCollectionView.layer.shadowOffset = CGSize(width: 1, height: 2)
+        horizontalCollectionView.layer.shadowOpacity = 0.3
+        horizontalCollectionView.layer.shadowRadius = 1.7
         
         self.bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "bookmark-icon-filled"), style: .plain, target: self, action: #selector(self.handleTouchOnBookmarks))
         bookmarkButton.tintColor = UIColor.cryptoBlack()
@@ -53,32 +60,60 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: Collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let news = self.news[indexPath.row]
-        showNewsDetails(news: news)
+        if collectionView == self.collectionView {
+            let news = self.news[indexPath.row]
+            showNewsDetails(news: news)
+        } else {
+            // HANDLE PRICES
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return news.count
+        if collectionView == self.collectionView {
+            return news.count
+        } else {
+            return 4 // Handle prices
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
-        let news = self.news[indexPath.row]
-        cell.delegate = self
-        cell.news = news
-        return cell
+        if collectionView == self.collectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
+            let news = self.news[indexPath.row]
+            cell.delegate = self
+            cell.news = news
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
+            cell.layer.cornerRadius = 10
+            return cell // Handle prices
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 24
+        if collectionView == self.collectionView {
+            return 24
+        } else {
+            return 4
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-34, height: 380)
+        if collectionView == self.collectionView {
+            return CGSize(width: UIScreen.main.bounds.width-34, height: 380)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.width/2.1, height: 60)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 4, bottom: 24, right: 4)
+        if collectionView ==  self.collectionView {
+            return UIEdgeInsets(top: 16, left: 4, bottom: 24, right: 4)
+        } else {
+            return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
+        }
     }
     
     // MARK: Actions
