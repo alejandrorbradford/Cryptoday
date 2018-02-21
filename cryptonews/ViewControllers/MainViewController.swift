@@ -4,6 +4,7 @@ import Imaginary
 
 protocol MainCollectionViewCellDelegate: class {
     func mainCelldidTappedOnBookmarks()
+    func mainCelldidTappedOnShare(link: String)
 }
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MainCollectionViewCellDelegate {
@@ -92,6 +93,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             self.navigationItem.rightBarButtonItem = self.bookmarkButton
         }
     }
+    
+    func mainCelldidTappedOnShare(link: String) {
+        showShareWithLink(link: link)
+    }
 }
 
 class MainCollectionViewCell: UICollectionViewCell {
@@ -151,7 +156,10 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func didTapOnShare(_ sender: UIButton) {
-        let link = news?.generateBranchIOLink()
-        print(link)
+        if let link = news?.generateBranchIOLink() {
+            delegate?.mainCelldidTappedOnShare(link: link)
+        } else {
+            print("error generating link")
+        }
     }
 }

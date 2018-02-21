@@ -103,7 +103,11 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func didTapShare(_ sender: UIButton) {
-        
+        if let link = news?.generateBranchIOLink() {
+            showShareWithLink(link: link)
+        } else {
+            print("error generating link")
+        }
     }
     
     // MARK: Animations

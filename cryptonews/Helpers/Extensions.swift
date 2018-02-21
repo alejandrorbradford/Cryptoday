@@ -31,6 +31,14 @@ extension UIViewController {
         let bookmarksVC = storyBoard.instantiateViewController(withIdentifier: "BookmarksViewController") as! BookmarksViewController
         navigationController?.pushViewController(bookmarksVC, animated: true)
     }
+    
+    func showShareWithLink(link: String) {
+        let activityController = UIActivityViewController(activityItems: [ URL(string: link)!, " Check this on article I saw on the Cryptoday app!" ], applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceView = self.view
+        activityController.excludedActivityTypes = [ .addToReadingList ]
+        self.present(activityController, animated: true, completion: nil)
+        
+    }
 }
 
 extension UIColor {
