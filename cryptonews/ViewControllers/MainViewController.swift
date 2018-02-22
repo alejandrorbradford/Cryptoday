@@ -73,7 +73,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView == self.collectionView {
             return news.count
         } else {
-            return 4 // Handle prices
+            return 500000
         }
     }
     
@@ -86,7 +86,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
-            cell.layer.cornerRadius = 10
             return cell // Handle prices
         }
         
@@ -96,7 +95,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView == self.collectionView {
             return 24
         } else {
-            return 4
+            return 0
         }
     }
     
@@ -104,7 +103,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView == self.collectionView {
             return CGSize(width: UIScreen.main.bounds.width-34, height: 380)
         } else {
-            return CGSize(width: UIScreen.main.bounds.width/2.1, height: 60)
+            return CGSize(width: (UIScreen.main.bounds.width)/2, height: 60)
         }
     }
     
@@ -112,7 +111,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView ==  self.collectionView {
             return UIEdgeInsets(top: 16, left: 4, bottom: 24, right: 4)
         } else {
-            return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
     

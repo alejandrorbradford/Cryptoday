@@ -136,7 +136,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nr8-5T-UW0">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nr8-5T-UW0">
                                 <rect key="frame" x="0.0" y="592" width="375" height="75"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -156,6 +156,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="174" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADk-i0-a6Q">
+                                                    <rect key="frame" x="4" y="4" width="166" height="49"/>
+                                                    <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin-sample-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tra-Hp-jS1">
                                                     <rect key="frame" x="10" y="12.5" width="32" height="32"/>
                                                     <constraints>
@@ -177,16 +181,23 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="UbR-Mq-0L1" firstAttribute="top" secondItem="fXf-lf-zRz" secondAttribute="bottom" constant="3" id="Id9-qh-QKE"/>
                                             <constraint firstItem="Tra-Hp-jS1" firstAttribute="centerY" secondItem="1SV-hM-Xuf" secondAttribute="centerY" id="JhQ-rB-TD5"/>
                                             <constraint firstItem="UbR-Mq-0L1" firstAttribute="leading" secondItem="Tra-Hp-jS1" secondAttribute="trailing" constant="9" id="K2i-Kd-Jyp"/>
+                                            <constraint firstAttribute="bottom" secondItem="ADk-i0-a6Q" secondAttribute="bottom" constant="4" id="OMJ-1D-TB9"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="fXf-lf-zRz" secondAttribute="trailing" constant="2" id="OT3-9w-Vo6"/>
                                             <constraint firstItem="fXf-lf-zRz" firstAttribute="top" secondItem="1SV-hM-Xuf" secondAttribute="topMargin" constant="2" id="UfC-rC-lWr"/>
                                             <constraint firstItem="fXf-lf-zRz" firstAttribute="leading" secondItem="Tra-Hp-jS1" secondAttribute="trailing" constant="9" id="X3x-tw-KYt"/>
+                                            <constraint firstItem="ADk-i0-a6Q" firstAttribute="leading" secondItem="1SV-hM-Xuf" secondAttribute="leading" constant="4" id="fO6-JO-gby"/>
+                                            <constraint firstAttribute="trailing" secondItem="ADk-i0-a6Q" secondAttribute="trailing" constant="4" id="ihU-qF-JPI"/>
+                                            <constraint firstItem="ADk-i0-a6Q" firstAttribute="top" secondItem="1SV-hM-Xuf" secondAttribute="top" constant="4" id="lDq-LR-v0o"/>
                                             <constraint firstItem="Tra-Hp-jS1" firstAttribute="leading" secondItem="1SV-hM-Xuf" secondAttribute="leadingMargin" constant="2" id="pa4-D2-4qf"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="containerView" destination="ADk-i0-a6Q" id="ZRt-Hu-jh8"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -195,11 +206,11 @@
                         <constraints>
                             <constraint firstItem="eCP-4B-0Pz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Aej-D2-kEA"/>
                             <constraint firstItem="eCP-4B-0Pz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="S0s-Ly-rZB"/>
-                            <constraint firstItem="nr8-5T-UW0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Uqi-Mx-kb6"/>
                             <constraint firstItem="nr8-5T-UW0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d6P-rh-Apf"/>
                             <constraint firstItem="eCP-4B-0Pz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="j1l-hI-jwK"/>
                             <constraint firstItem="nr8-5T-UW0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jsV-3o-HSy"/>
                             <constraint firstItem="eCP-4B-0Pz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jzM-iC-63s"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nr8-5T-UW0" secondAttribute="trailing" id="pST-uy-pzw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
