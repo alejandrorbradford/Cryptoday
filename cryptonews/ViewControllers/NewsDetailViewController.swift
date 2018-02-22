@@ -78,10 +78,10 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
             formattedParagraph.append($0)
             textView.text.append(formattedParagraph)
         }
-        bottomView.layer.shadowColor = UIColor.black.cgColor
-        bottomView.layer.shadowOffset = CGSize(width: 1, height: 2)
+        bottomView.layer.shadowColor = UIColor.darkGray.cgColor
+        bottomView.layer.shadowOffset = CGSize(width: 0, height: -1)
         bottomView.layer.shadowOpacity = 0.3
-        bottomView.layer.shadowRadius = 1.7
+        bottomView.layer.shadowRadius = 1.0
         updateBookmarkButton()
     }
     
@@ -120,7 +120,7 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func hideButtonMenu() {
         UIView.animate(withDuration: 0.3) {
-            self.menuViewBottomConstraint.constant = -70
+            self.menuViewBottomConstraint.constant = -100
             self.view.layoutIfNeeded()
         }
     }

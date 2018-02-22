@@ -32,10 +32,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refresher.tintColor = .gray
         refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         collectionView!.addSubview(refresher)
-        horizontalCollectionView.layer.shadowColor = UIColor.black.cgColor
-        horizontalCollectionView.layer.shadowOffset = CGSize(width: 1, height: 2)
-        horizontalCollectionView.layer.shadowOpacity = 0.3
-        horizontalCollectionView.layer.shadowRadius = 1.7
+//        horizontalCollectionView.layer.shadowColor = UIColor.black.cgColor
+//        horizontalCollectionView.layer.shadowOffset = CGSize(width: 1, height: -2)
+//        horizontalCollectionView.layer.shadowOpacity = 0.3
+//        horizontalCollectionView.layer.shadowRadius = 1.7
         
         self.bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "bookmark-icon-filled"), style: .plain, target: self, action: #selector(self.handleTouchOnBookmarks))
         bookmarkButton.tintColor = UIColor.cryptoBlack()
@@ -59,15 +59,17 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @objc func animateHorizontalCollectionView() {
-        let cells = self.horizontalCollectionView.visibleCells
-        guard cells.count > 0 else { return }
-        var indexPath = self.horizontalCollectionView.indexPath(for: cells.first!)
-        if indexPath!.row == self.coins.count-1 {
-            self.horizontalCollectionView.setContentOffset(.zero, animated: false)
-            self.horizontalCollectionView.reloadData()
-        } else {
-            indexPath!.row = indexPath!.row + 1 // Next
-            self.horizontalCollectionView.scrollToItem(at: indexPath!, at: .left, animated: true)
+        DispatchQueue.main.async {
+            let cells = self.horizontalCollectionView.visibleCells
+            guard cells.count > 0 else { return }
+            var indexPath = self.horizontalCollectionView.indexPath(for: cells.first!)
+            if indexPath!.row == self.coins.count-1 {
+                self.horizontalCollectionView.setContentOffset(.zero, animated: false)
+                self.horizontalCollectionView.reloadData()
+            } else {
+                indexPath!.row = indexPath!.row + 1 // Next
+                self.horizontalCollectionView.scrollToItem(at: indexPath!, at: .left, animated: true)
+            }
         }
     }
     
