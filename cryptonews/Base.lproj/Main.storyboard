@@ -161,20 +161,20 @@
                                                     <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin-sample-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tra-Hp-jS1">
-                                                    <rect key="frame" x="10" y="18.5" width="20" height="20"/>
+                                                    <rect key="frame" x="10" y="14.5" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Tra-Hp-jS1" secondAttribute="height" multiplier="1:1" id="ZcB-rt-q8S"/>
-                                                        <constraint firstAttribute="width" constant="20" id="jAg-UR-OvI"/>
+                                                        <constraint firstAttribute="width" constant="28" id="jAg-UR-OvI"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXf-lf-zRz">
-                                                    <rect key="frame" x="39" y="12" width="26" height="14.5"/>
+                                                    <rect key="frame" x="47" y="12" width="26" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-Mq-0L1">
-                                                    <rect key="frame" x="39" y="29.5" width="42" height="14.5"/>
+                                                    <rect key="frame" x="47" y="29.5" width="42" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -189,6 +189,8 @@
                                             <constraint firstAttribute="bottom" secondItem="ADk-i0-a6Q" secondAttribute="bottom" constant="4" id="OMJ-1D-TB9"/>
                                             <constraint firstItem="fXf-lf-zRz" firstAttribute="top" secondItem="1SV-hM-Xuf" secondAttribute="topMargin" constant="4" id="UfC-rC-lWr"/>
                                             <constraint firstItem="fXf-lf-zRz" firstAttribute="leading" secondItem="Tra-Hp-jS1" secondAttribute="trailing" constant="9" id="X3x-tw-KYt"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UbR-Mq-0L1" secondAttribute="trailing" symbolic="YES" id="XKw-m2-OXO"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fXf-lf-zRz" secondAttribute="trailing" symbolic="YES" id="c19-tL-4pv"/>
                                             <constraint firstItem="ADk-i0-a6Q" firstAttribute="leading" secondItem="1SV-hM-Xuf" secondAttribute="leading" constant="4" id="fO6-JO-gby"/>
                                             <constraint firstAttribute="trailing" secondItem="ADk-i0-a6Q" secondAttribute="trailing" constant="4" id="ihU-qF-JPI"/>
                                             <constraint firstItem="ADk-i0-a6Q" firstAttribute="top" secondItem="1SV-hM-Xuf" secondAttribute="top" constant="4" id="lDq-LR-v0o"/>

@@ -59,17 +59,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @objc func animateHorizontalCollectionView() {
-        DispatchQueue.main.async {
-            let cells = self.horizontalCollectionView.visibleCells
-            guard cells.count > 0 else { return }
-            var indexPath = self.horizontalCollectionView.indexPath(for: cells.first!)
-            if indexPath!.row == self.coins.count-1 {
-                self.horizontalCollectionView.setContentOffset(.zero, animated: false)
-                self.horizontalCollectionView.reloadData()
-            } else {
-                indexPath!.row = indexPath!.row + 1 // Next
-                self.horizontalCollectionView.scrollToItem(at: indexPath!, at: .left, animated: true)
-            }
+        let cells = self.horizontalCollectionView.visibleCells
+        guard cells.count > 0 else { return }
+        var indexPath = self.horizontalCollectionView.indexPath(for: cells.first!)
+        if indexPath!.row == self.coins.count-1 {
+            self.horizontalCollectionView.setContentOffset(.zero, animated: false)
+            self.horizontalCollectionView.reloadData()
+        } else {
+            indexPath!.row = indexPath!.row + 1 // Next
+            self.horizontalCollectionView.scrollToItem(at: indexPath!, at: .left, animated: true)
         }
     }
     
