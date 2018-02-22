@@ -15,7 +15,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var refresher: UIRefreshControl!
     var bookmarkButton: UIBarButtonItem!
     
+    var timer: Timer?
     var news = [News]()
+    var coins = [Cryptocurrency]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +43,39 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let realm = try! Realm()
         news = (realm.objects(News.self).toArray() as! [News]).sorted { $0.publishedDate > $1.publishedDate }
+        coins = (realm.objects(Cryptocurrency.self).toArray() as! [Cryptocurrency]).sorted { $0.rank < $1.rank }
         fetchData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.animateHorizontalCollectionView), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    @objc func animateHorizontalCollectionView() {
+        DispatchQueue.main.async {
+            let cells = self.horizontalCollectionView.visibleCells
+            guard cells.count > 0 else { return }
+            var indexPath = self.horizontalCollectionView.indexPath(for: cells.first!)
+            if indexPath!.row == self.coins.count-1 {
+                self.horizontalCollectionView.setContentOffset(.zero, animated: false)
+                self.horizontalCollectionView.reloadData()
+            } else {
+                indexPath!.row = indexPath!.row + 1 // Next
+                self.horizontalCollectionView.scrollToItem(at: indexPath!, at: .left, animated: true)
+            }
+        }
     }
     
     // MARK: Fetch
     @objc func fetchData() {
-        APIEngine.getAllRecentNews { [weak self] (news, error) in
+        APIEngine.getCcnNews { [weak self] (news, error) in
             guard let strongSelf = self else { return }
             guard let news = news else { return }
             // TODO: Error handling
@@ -55,6 +84,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             strongSelf.news = strongSelf.news.sorted { $0.publishedDate > $1.publishedDate }
             strongSelf.collectionView.reloadData()
             if strongSelf.refresher.isRefreshing { strongSelf.refresher.endRefreshing() }
+            strongSelf.fetchCryptos()
+        }
+    }
+    
+    func fetchCryptos() {
+        APIEngine.getCryptoCurrencyData { [weak self] (cryptos, error) in
+            guard let strongSelf = self else { return }
+            guard let cryptos = cryptos else { return }
+            strongSelf.coins = cryptos.sorted { $0.rank < $1.rank }
+            strongSelf.horizontalCollectionView.reloadData()
         }
     }
     
@@ -73,7 +112,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if collectionView == self.collectionView {
             return news.count
         } else {
-            return 500000
+            return coins.count
         }
     }
     
@@ -86,7 +125,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionViewCell", for: indexPath) as! CoinCollectionViewCell
-            return cell // Handle prices
+            let crypto = coins[indexPath.row]
+            cell.crypto = crypto
+            return cell
         }
         
     }

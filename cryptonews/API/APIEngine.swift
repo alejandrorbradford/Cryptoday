@@ -5,10 +5,11 @@ import RealmSwift
 
 class APIEngine {
     
-    static let apiUrl = "https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let ccnNewsUrl = "https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let coinMarketCapUrl = "https://api.coinmarketcap.com/v1/ticker/"
     
-    static func getAllRecentNews(completion: @escaping (_ news: [News]?, _ error: Error?) -> Void) {
-        Alamofire.request(apiUrl, method: .get).responseJSON { response in
+    static func getCcnNews(completion: @escaping (_ news: [News]?, _ error: Error?) -> Void) {
+        Alamofire.request(ccnNewsUrl, method: .get).responseJSON { response in
             switch response.result {
             case .success:
                 let value = response.value as! [String:Any]
@@ -26,6 +27,18 @@ class APIEngine {
                 self.parseHTML(html: html, news: news, completion: completion)
             } else {
                 completion(nil, response.result.error)
+            }
+        }
+    }
+    
+    static func getCryptoCurrencyData(completion: @escaping (_ crypto: [Cryptocurrency]?, _ error: Error?) -> Void) {
+        Alamofire.request(coinMarketCapUrl, method: .get).responseJSON { response in
+            switch response.result {
+            case .success:
+                let value = response.value as! [[String:Any]]
+                let cryptos = Cryptocurrency.importCryptosFromDictionaryArray(dictionaries: value)
+                completion(cryptos, nil)
+            case .failure(let error): completion(nil, error)
             }
         }
     }
