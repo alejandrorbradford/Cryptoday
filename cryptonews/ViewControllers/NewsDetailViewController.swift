@@ -86,7 +86,7 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func updateBookmarkButton() {
-        bookmarkButton.setImage(news.isBookmarked ? #imageLiteral(resourceName: "bookmark-icon-filled") : #imageLiteral(resourceName: "bookmark-icon"), for: .normal)
+        bookmarkButton.setImage(news.isBookmarked ? #imageLiteral(resourceName: "bookmark-icon-filled") : #imageLiteral(resourceName: "bookmark-icon-bold"), for: .normal)
     }
     
     // MARK: Actions

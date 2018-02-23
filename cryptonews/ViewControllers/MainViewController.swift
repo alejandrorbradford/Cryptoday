@@ -11,6 +11,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet var horizontalCollectionView: UICollectionView!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var bottomView: UIView!
     
     var refresher: UIRefreshControl!
     var bookmarkButton: UIBarButtonItem!
@@ -32,10 +33,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refresher.tintColor = .gray
         refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         collectionView!.addSubview(refresher)
-//        horizontalCollectionView.layer.shadowColor = UIColor.black.cgColor
-//        horizontalCollectionView.layer.shadowOffset = CGSize(width: 1, height: -2)
-//        horizontalCollectionView.layer.shadowOpacity = 0.3
-//        horizontalCollectionView.layer.shadowRadius = 1.7
+        bottomView.layer.shadowColor = UIColor.black.cgColor
+        bottomView.layer.shadowOffset = CGSize(width: 1, height: -2)
+        bottomView.layer.shadowOpacity = 0.3
+        bottomView.layer.shadowRadius = 1.7
         
         self.bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "bookmark-icon-filled"), style: .plain, target: self, action: #selector(self.handleTouchOnBookmarks))
         bookmarkButton.tintColor = UIColor.cryptoBlack()
