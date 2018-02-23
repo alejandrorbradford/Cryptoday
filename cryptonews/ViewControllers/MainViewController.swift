@@ -50,10 +50,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setUpTimer()
+    }
+    
+    func setUpTimer() {
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.animateHorizontalCollectionView), userInfo: nil, repeats: true)
-        APIEngine.updateCryptoCurrencyAdditionalData { (cryptos, error) in
-            
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,6 +75,25 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 indexPath!.row = indexPath!.row + 1 // Next
                 self.horizontalCollectionView.scrollToItem(at: indexPath!, at: .left, animated: true)
             }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if collectionView.isDragging || collectionView.isDecelerating {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !collectionView.isDragging && !collectionView.isDecelerating {
+            setUpTimer()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if !collectionView.isDragging && !collectionView.isDecelerating {
+            setUpTimer()
         }
     }
     
@@ -98,6 +118,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             guard let cryptos = cryptos else { return }
             strongSelf.coins = cryptos.sorted { $0.rank < $1.rank }
             strongSelf.horizontalCollectionView.reloadData()
+            APIEngine.updateCryptoCurrencyAdditionalData(completion: { _,_ in })
         }
     }
     
