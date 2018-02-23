@@ -24,6 +24,7 @@ class Cryptocurrency: Object {
     @objc dynamic var percentageChange24h = ""
     @objc dynamic var percentageChange7d = ""
     @objc dynamic var lastUpdated = Date(timeIntervalSince1970: 1)
+    @objc dynamic var imageUrl = ""
     
     override static func primaryKey() -> String? {
         return "cryptoID"
@@ -46,11 +47,28 @@ class Cryptocurrency: Object {
         return cryptoArray
     }
     
+    static func updateCryptoDataFromArray(dictionaries: [[String:Any]]) -> [Cryptocurrency] {
+        var cryptoArray = [Cryptocurrency]()
+        do {
+            let realm = try Realm()
+            try realm.write {
+                for dictionary in dictionaries {
+                    guard let crypto = updateAdditionalData(data: dictionary) else { continue }
+                    cryptoArray.append(crypto)
+                }
+                realm.add(cryptoArray, update: true)
+            }
+        } catch {
+            print(error)
+        }
+        return cryptoArray
+    }
+    
     static func importFromDictionary(dictionary: [String:Any]) -> Cryptocurrency {
-        let cryptoID = dictionary["id"] as! String
+        let cryptoID = dictionary["symbol"] as! String
         guard let crypto = getOrCreateCryptoWithID(cryptoID: cryptoID) else { preconditionFailure() }
         crypto.name = dictionary["name"] as! String
-        crypto.symbol = dictionary["symbol"] as! String
+        crypto.symbol = cryptoID
         let rankString = dictionary["rank"] as! String
         crypto.rank = NumberFormatter().number(from: rankString)!.intValue
         crypto.priceUSD = dictionary["price_usd"] as! String
@@ -68,14 +86,21 @@ class Cryptocurrency: Object {
         return crypto
     }
     
-    static func getOrCreateCryptoWithID(cryptoID: String) -> Cryptocurrency? {
+    static func getOrCreateCryptoWithID(cryptoID: String, shouldCreate: Bool = true) -> Cryptocurrency? {
         do {
             let realm = try Realm()
             let query = (realm.objects(Cryptocurrency.self).toArray() as! [Cryptocurrency]).filter { $0.cryptoID == cryptoID }
-            if query.count > 0 { return query.first! } else { let crypto = Cryptocurrency(); crypto.cryptoID = cryptoID; return crypto }
+            if query.count > 0 { return query.first! } else if shouldCreate { let crypto = Cryptocurrency(); crypto.cryptoID = cryptoID; return crypto } else { return nil }
         } catch {
             print(error)
             return nil
         }
+    }
+    
+    static func updateAdditionalData(data: [String:Any]) -> Cryptocurrency? {
+        let cryptoID = data["Symbol"] as! String
+        guard let crypto = getOrCreateCryptoWithID(cryptoID: cryptoID, shouldCreate: false) else { return nil }
+        crypto.imageUrl = "https://www.cryptocompare.com\(data["ImageUrl"] as! String)"
+        return crypto
     }
 }

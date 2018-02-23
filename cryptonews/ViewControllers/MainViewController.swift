@@ -51,6 +51,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.animateHorizontalCollectionView), userInfo: nil, repeats: true)
+        APIEngine.updateCryptoCurrencyAdditionalData { (cryptos, error) in
+            
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

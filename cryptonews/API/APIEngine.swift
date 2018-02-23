@@ -7,6 +7,7 @@ class APIEngine {
     
     static let ccnNewsUrl = "https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
     static let coinMarketCapUrl = "https://api.coinmarketcap.com/v1/ticker/"
+    static let coinAdditionalData = "https://www.cryptocompare.com/api/data/coinlist/"
     
     static func getCcnNews(completion: @escaping (_ news: [News]?, _ error: Error?) -> Void) {
         Alamofire.request(ccnNewsUrl, method: .get).responseJSON { response in
@@ -37,6 +38,23 @@ class APIEngine {
             case .success:
                 let value = response.value as! [[String:Any]]
                 let cryptos = Cryptocurrency.importCryptosFromDictionaryArray(dictionaries: value)
+                completion(cryptos, nil)
+            case .failure(let error): completion(nil, error)
+            }
+        }
+    }
+    
+    static func updateCryptoCurrencyAdditionalData(completion: @escaping (_ crypto: [Cryptocurrency]?, _ error: Error?) -> Void) {
+        Alamofire.request(coinAdditionalData, method: .get).responseJSON { response in
+            switch response.result {
+            case .success:
+                let value = response.value as! [String:Any]
+                let data = value["Data"] as! [String:Any]
+                var parsedData = [[String:Any]]()
+                data.values.forEach {
+                    parsedData.append($0 as! [String:Any])
+                }
+                let cryptos = Cryptocurrency.updateCryptoDataFromArray(dictionaries: parsedData)
                 completion(cryptos, nil)
             case .failure(let error): completion(nil, error)
             }

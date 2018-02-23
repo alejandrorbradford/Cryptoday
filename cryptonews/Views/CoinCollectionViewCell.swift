@@ -11,6 +11,7 @@ import UIKit
 
 class CoinCollectionViewCell: UICollectionViewCell {
    
+    @IBOutlet var logoImageView: UIImageView!
     @IBOutlet var containerView: UIView!
     
     @IBOutlet var priceLabel: UILabel!
@@ -20,10 +21,15 @@ class CoinCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.cornerRadius = 10
+        logoImageView.layer.cornerRadius = logoImageView.frame.size.width/2
+        logoImageView.layer.masksToBounds = true
     }
     
     func updateUI() {
         symbolLabel.text = crypto.symbol
         priceLabel.text = crypto.priceUSD
+        if let url = URL(string: crypto.imageUrl) {
+            logoImageView.setImage(url: url)
+        }
     }
 }

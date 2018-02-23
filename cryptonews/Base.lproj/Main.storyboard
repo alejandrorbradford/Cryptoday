@@ -163,21 +163,21 @@
                                                             <rect key="frame" x="4" y="4" width="166" height="49"/>
                                                             <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin-sample-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tra-Hp-jS1">
-                                                            <rect key="frame" x="10" y="14.5" width="28" height="28"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin-sample-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Tra-Hp-jS1">
+                                                            <rect key="frame" x="16" y="14.5" width="28" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Tra-Hp-jS1" secondAttribute="height" multiplier="1:1" id="ZcB-rt-q8S"/>
                                                                 <constraint firstAttribute="width" constant="28" id="jAg-UR-OvI"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SYM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXf-lf-zRz">
-                                                            <rect key="frame" x="47" y="12" width="26" height="14.5"/>
+                                                            <rect key="frame" x="53" y="12" width="26" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-Mq-0L1">
-                                                            <rect key="frame" x="47" y="29.5" width="42" height="14.5"/>
+                                                            <rect key="frame" x="53" y="29.5" width="42" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -197,10 +197,11 @@
                                                     <constraint firstItem="ADk-i0-a6Q" firstAttribute="leading" secondItem="1SV-hM-Xuf" secondAttribute="leading" constant="4" id="fO6-JO-gby"/>
                                                     <constraint firstAttribute="trailing" secondItem="ADk-i0-a6Q" secondAttribute="trailing" constant="4" id="ihU-qF-JPI"/>
                                                     <constraint firstItem="ADk-i0-a6Q" firstAttribute="top" secondItem="1SV-hM-Xuf" secondAttribute="top" constant="4" id="lDq-LR-v0o"/>
-                                                    <constraint firstItem="Tra-Hp-jS1" firstAttribute="leading" secondItem="1SV-hM-Xuf" secondAttribute="leadingMargin" constant="2" id="pa4-D2-4qf"/>
+                                                    <constraint firstItem="Tra-Hp-jS1" firstAttribute="leading" secondItem="1SV-hM-Xuf" secondAttribute="leadingMargin" constant="8" id="pa4-D2-4qf"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="containerView" destination="ADk-i0-a6Q" id="ZRt-Hu-jh8"/>
+                                                    <outlet property="logoImageView" destination="Tra-Hp-jS1" id="AFl-TZ-Paa"/>
                                                     <outlet property="priceLabel" destination="UbR-Mq-0L1" id="0zo-a5-gHo"/>
                                                     <outlet property="symbolLabel" destination="fXf-lf-zRz" id="nKp-hb-Q9Y"/>
                                                 </connections>
