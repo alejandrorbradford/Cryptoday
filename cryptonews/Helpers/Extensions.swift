@@ -46,3 +46,12 @@ extension UIColor {
         return UIColor.init(red: 30/255.0, green: 30/255.0, blue: 30/255.0, alpha: 1)
     }
 }
+
+extension NSMutableAttributedString {
+    func setColorForText(_ textToFind: String, with color: UIColor) {
+        let range = self.mutableString.range(of: textToFind, options: .caseInsensitive)
+        if range.location != NSNotFound {
+            addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+        }
+    }
+}

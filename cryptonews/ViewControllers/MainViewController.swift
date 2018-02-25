@@ -78,22 +78,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if collectionView.isDragging || collectionView.isDecelerating {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if horizontalCollectionView.isDragging {
             timer?.invalidate()
             timer = nil
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !collectionView.isDragging && !collectionView.isDecelerating {
-            setUpTimer()
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if !collectionView.isDragging && !collectionView.isDecelerating {
-            setUpTimer()
         }
     }
     

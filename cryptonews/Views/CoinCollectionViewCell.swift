@@ -25,11 +25,24 @@ class CoinCollectionViewCell: UICollectionViewCell {
         logoImageView.layer.masksToBounds = true
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        logoImageView.image = nil
+        logoImageView.isHidden = false
+    }
+    
     func updateUI() {
-        symbolLabel.text = crypto.symbol
-        priceLabel.text = crypto.priceUSD
+        let attributedString = NSMutableAttributedString(string:"\(crypto.symbol) (\(crypto.percentageChange24h)%)")
+        if let number = NumberFormatter().number(from: crypto.percentageChange24h) {
+            let float = CGFloat(truncating: number)
+            attributedString.setColorForText("(\(crypto.percentageChange24h)%)", with: float > 0 ? .green : .red)
+        }
+        symbolLabel.attributedText = attributedString
+        priceLabel.text = "$\(crypto.priceUSD)"
         if let url = URL(string: crypto.imageUrl) {
             logoImageView.setImage(url: url)
+        } else {
+            logoImageView.isHidden = true
         }
     }
 }
