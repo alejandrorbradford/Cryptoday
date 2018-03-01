@@ -37,6 +37,8 @@ class CoinCollectionViewCell: UICollectionViewCell {
             let float = CGFloat(truncating: number)
             attributedString.setColorForText("(\(crypto.percentageChange24h)%)", with: float > 0 ? .green : .red)
         }
+        let range = NSRange(location: 0, length: attributedString.length)
+        attributedString.addAttributes([ .font : UIFont.systemFont(ofSize: 12, weight: .bold) ], range: range)
         symbolLabel.attributedText = attributedString
         priceLabel.text = "$\(crypto.priceUSD)"
         if let url = URL(string: crypto.imageUrl) {
