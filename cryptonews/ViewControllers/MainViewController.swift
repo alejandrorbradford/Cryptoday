@@ -116,7 +116,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let news = self.news[indexPath.row]
             showNewsDetails(news: news)
         } else {
-            // HANDLE PRICES
+            let crypto = self.coins[indexPath.row]
+            showPricesVC(with: crypto)
         }
         
     }

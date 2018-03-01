@@ -39,6 +39,14 @@ extension UIViewController {
         self.present(activityController, animated: true, completion: nil)
         
     }
+    
+    func showPricesVC(with crypto: Cryptocurrency) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let pricesVC = storyBoard.instantiateViewController(withIdentifier: "PricesViewController") as! PricesViewController
+        pricesVC.selectedCrypto = crypto
+        pricesVC.modalTransitionStyle = .flipHorizontal
+        present(pricesVC, animated: true, completion: nil)
+    }
 }
 
 extension UIColor {
