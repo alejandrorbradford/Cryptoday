@@ -44,8 +44,9 @@ extension UIViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let pricesVC = storyBoard.instantiateViewController(withIdentifier: "PricesViewController") as! PricesViewController
         pricesVC.selectedCrypto = crypto
-        pricesVC.modalTransitionStyle = .flipHorizontal
-        present(pricesVC, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: pricesVC)
+        navigationController.modalTransitionStyle = .flipHorizontal
+        present(navigationController, animated: true, completion: nil)
     }
 }
 

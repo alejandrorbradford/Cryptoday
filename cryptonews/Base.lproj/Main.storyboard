@@ -450,50 +450,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cvg-jx-iYZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cvg-jx-iYZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CryptoTableViewCell" rowHeight="188" id="6zc-jw-rL3" customClass="CryptoTableViewCell" customModule="cryptonews" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CryptoTableViewCell" rowHeight="188" id="6zc-jw-rL3" customClass="CryptoTableViewCell" customModule="cryptonews" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="188"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6zc-jw-rL3" id="DrQ-b8-4jh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="0J3-Qp-kPF">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-i4-3Fu">
                                                     <rect key="frame" x="15" y="11" width="345" height="166"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="0J3-Qp-kPF">
+                                                    <rect key="frame" x="23" y="27" width="337" height="134"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin-sample-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Qat-Cj-J80">
-                                                            <rect key="frame" x="0.0" y="33" width="100" height="100"/>
+                                                            <rect key="frame" x="0.0" y="27" width="80" height="80"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="ghN-UW-QDa"/>
+                                                                <constraint firstAttribute="width" constant="80" id="cQq-FY-PuE"/>
                                                                 <constraint firstAttribute="width" secondItem="Qat-Cj-J80" secondAttribute="height" multiplier="1:1" id="zS1-jT-5cP"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="bXa-ws-vtS">
-                                                            <rect key="frame" x="114" y="24.5" width="231" height="117"/>
+                                                            <rect key="frame" x="94" y="8.5" width="243" height="117"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin (BTC)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlK-AO-drS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="231" height="29"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="243" height="29"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                                     <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11,239" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6O-Ux-0O2">
-                                                                    <rect key="frame" x="0.0" y="35" width="231" height="29"/>
+                                                                    <rect key="frame" x="0.0" y="35" width="243" height="29"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                                     <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Market Cap: 10002" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7b-bt-MV8">
-                                                                    <rect key="frame" x="0.0" y="70" width="231" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="70" width="243" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume 24h: 10002" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axt-HG-B1I">
-                                                                    <rect key="frame" x="0.0" y="96.5" width="231" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="96.5" width="243" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -504,14 +509,19 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0J3-Qp-kPF" firstAttribute="top" secondItem="DrQ-b8-4jh" secondAttribute="topMargin" id="2Z4-dL-G33"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="0J3-Qp-kPF" secondAttribute="bottom" id="fwb-2t-EQT"/>
-                                                <constraint firstItem="0J3-Qp-kPF" firstAttribute="leading" secondItem="DrQ-b8-4jh" secondAttribute="leadingMargin" id="jEZ-Qh-Hq5"/>
+                                                <constraint firstItem="0J3-Qp-kPF" firstAttribute="top" secondItem="DrQ-b8-4jh" secondAttribute="topMargin" constant="16" id="2Z4-dL-G33"/>
+                                                <constraint firstItem="HEf-i4-3Fu" firstAttribute="leading" secondItem="DrQ-b8-4jh" secondAttribute="leadingMargin" id="AJJ-sN-5q6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HEf-i4-3Fu" secondAttribute="bottom" id="CJ7-e2-P3C"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0J3-Qp-kPF" secondAttribute="bottom" constant="16" id="fwb-2t-EQT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HEf-i4-3Fu" secondAttribute="trailing" id="i5s-Wo-lCX"/>
+                                                <constraint firstItem="HEf-i4-3Fu" firstAttribute="top" secondItem="DrQ-b8-4jh" secondAttribute="topMargin" id="ipz-4T-Pqh"/>
+                                                <constraint firstItem="0J3-Qp-kPF" firstAttribute="leading" secondItem="DrQ-b8-4jh" secondAttribute="leadingMargin" constant="8" id="jEZ-Qh-Hq5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0J3-Qp-kPF" secondAttribute="trailing" id="wWO-gP-3Hm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cryptImageView" destination="Qat-Cj-J80" id="y76-lq-alR"/>
+                                            <outlet property="innerContentView" destination="HEf-i4-3Fu" id="uVU-fW-PZY"/>
                                             <outlet property="marketCapLabel" destination="C7b-bt-MV8" id="XqP-zi-yTD"/>
                                             <outlet property="nameLabel" destination="OlK-AO-drS" id="Qzu-bM-zDp"/>
                                             <outlet property="priceLabel" destination="v6O-Ux-0O2" id="fa8-c5-HKT"/>
@@ -526,17 +536,18 @@
                             <constraint firstItem="Cvg-jx-iYZ" firstAttribute="bottom" secondItem="GMp-zP-O91" secondAttribute="bottom" id="4fi-Af-scu"/>
                             <constraint firstItem="Cvg-jx-iYZ" firstAttribute="trailing" secondItem="GMp-zP-O91" secondAttribute="trailing" id="ENV-8u-iIW"/>
                             <constraint firstItem="Cvg-jx-iYZ" firstAttribute="leading" secondItem="GMp-zP-O91" secondAttribute="leading" id="On1-O0-nc1"/>
-                            <constraint firstItem="Cvg-jx-iYZ" firstAttribute="top" secondItem="41w-Mv-Y8c" secondAttribute="top" id="p9t-nG-wCB"/>
+                            <constraint firstItem="Cvg-jx-iYZ" firstAttribute="top" secondItem="GMp-zP-O91" secondAttribute="top" id="UWF-aO-fWi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GMp-zP-O91"/>
                     </view>
+                    <navigationItem key="navigationItem" id="MAi-sh-Isb"/>
                     <connections>
                         <outlet property="tableView" destination="Cvg-jx-iYZ" id="7v7-gS-OyG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNw-bC-cwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924" y="840.62968515742136"/>
+            <point key="canvasLocation" x="1263.2" y="840.62968515742136"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="1JU-B5-kkZ">
