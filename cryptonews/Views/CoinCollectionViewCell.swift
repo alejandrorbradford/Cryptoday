@@ -35,7 +35,7 @@ class CoinCollectionViewCell: UICollectionViewCell {
         let attributedString = NSMutableAttributedString(string:"\(crypto.symbol) (\(crypto.percentageChange24h)%)")
         if let number = NumberFormatter().number(from: crypto.percentageChange24h) {
             let float = CGFloat(truncating: number)
-            attributedString.setColorForText("(\(crypto.percentageChange24h)%)", with: float > 0 ? .green : .red)
+            attributedString.setColorForText("(\(crypto.percentageChange24h)%)", with: float > 0 ? .cryptoGreen() : .red)
         }
         let range = NSRange(location: 0, length: attributedString.length)
         attributedString.addAttributes([ .font : UIFont.systemFont(ofSize: 12, weight: .bold) ], range: range)

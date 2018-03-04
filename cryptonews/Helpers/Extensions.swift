@@ -54,6 +54,10 @@ extension UIColor {
     static func cryptoBlack() -> UIColor {
         return UIColor.init(red: 30/255.0, green: 30/255.0, blue: 30/255.0, alpha: 1)
     }
+    
+    static func cryptoGreen() -> UIColor {
+        return UIColor.init(red: 0/255.0, green: 179/255.0, blue: 32/255.0, alpha: 1)
+    }
 }
 
 extension NSMutableAttributedString {
