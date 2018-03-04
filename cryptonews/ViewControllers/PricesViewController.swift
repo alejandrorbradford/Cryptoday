@@ -146,6 +146,7 @@ class CryptoTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        cryptImageView.image = nil
         updateUI()
     }
     
