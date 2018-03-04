@@ -22,10 +22,11 @@ class PricesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var currentTime: TimeOptions = .oneDay
     var timeButton: UIBarButtonItem?
+    var refresher: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Prices"
+        title = "Market"
         let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(self.exitVC))
         navigationItem.leftBarButtonItem = closeButton
         timeButton = UIBarButtonItem(title: "24 Hours", style: .plain, target: self, action: #selector(self.handleTimeChange))
@@ -33,12 +34,31 @@ class PricesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        
+        // Refresher
+        refresher = UIRefreshControl()
+        tableView.alwaysBounceVertical = true
+        refresher.tintColor = .gray
+        refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+        tableView.addSubview(refresher)
+        
         let realm = try! Realm()
         allCryptos = (realm.objects(Cryptocurrency.self).toArray() as! [Cryptocurrency]).sorted { $0.rank < $1.rank }
         // Scroll Automaically to selected coin
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: self.allCryptos.index(of: self.selectedCrypto)!, section: 0)
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
+    }
+    
+    @objc func fetchData() {
+        APIEngine.getCryptoCurrencyData { [weak self] (cryptos, error) in
+            guard let strongSelf = self else { return }
+            guard let cryptos = cryptos else { return }
+            strongSelf.allCryptos = cryptos.sorted { $0.rank < $1.rank }
+            strongSelf.tableView.reloadData()
+            APIEngine.updateCryptoCurrencyAdditionalData(completion: { _,_ in })
+            if strongSelf.refresher.isRefreshing { strongSelf.refresher.endRefreshing() }
         }
     }
     
@@ -104,7 +124,7 @@ class CryptoTableViewCell: UITableViewCell {
     func updateUI() {
         DispatchQueue.main.async {
             if let url = URL(string: self.crypto.imageUrl) { self.cryptImageView.setImage(url: url) }
-            self.nameLabel.text = self.crypto.name
+            self.nameLabel.text = "\(self.crypto.name) (\(self.crypto.symbol))"
             self.marketCapLabel.text = self.crypto.marketCap
             self.volumeLabel.text = self.crypto.usdVolume24h
             var percentage = self.crypto.percentageChange24h
