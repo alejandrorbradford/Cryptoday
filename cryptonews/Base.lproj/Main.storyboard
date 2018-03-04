@@ -337,13 +337,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paul Giamatti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnB-C8-O6o">
-                                        <rect key="frame" x="16" y="61.5" width="343" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <rect key="frame" x="16" y="61.5" width="343" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygk-2g-hTx">
-                                        <rect key="frame" x="16" y="98" width="343" height="39"/>
+                                        <rect key="frame" x="16" y="112" width="343" height="39"/>
                                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -356,7 +356,7 @@
                                     <constraint firstItem="ygk-2g-hTx" firstAttribute="centerX" secondItem="a3Q-nW-KEW" secondAttribute="centerX" id="I4b-qk-pLg"/>
                                     <constraint firstItem="KnB-C8-O6o" firstAttribute="leading" secondItem="a3Q-nW-KEW" secondAttribute="leading" constant="16" id="JBn-Y9-FLW"/>
                                     <constraint firstItem="ygk-2g-hTx" firstAttribute="leading" secondItem="a3Q-nW-KEW" secondAttribute="leading" constant="16" id="OXv-Ff-omd"/>
-                                    <constraint firstItem="ygk-2g-hTx" firstAttribute="top" secondItem="KnB-C8-O6o" secondAttribute="bottom" constant="12" id="Tad-9b-ZX3"/>
+                                    <constraint firstItem="ygk-2g-hTx" firstAttribute="top" secondItem="KnB-C8-O6o" secondAttribute="bottom" constant="24" id="Tad-9b-ZX3"/>
                                     <constraint firstItem="j9b-Je-iIC" firstAttribute="top" secondItem="a3Q-nW-KEW" secondAttribute="top" constant="16" id="U4O-f9-l6t"/>
                                     <constraint firstItem="j9b-Je-iIC" firstAttribute="leading" secondItem="a3Q-nW-KEW" secondAttribute="leading" constant="16" id="Yb1-R6-87W"/>
                                     <constraint firstAttribute="bottom" secondItem="ygk-2g-hTx" secondAttribute="bottom" constant="32" id="im2-kA-uO9"/>

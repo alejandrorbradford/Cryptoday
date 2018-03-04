@@ -25,8 +25,6 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = news.title
-        title = "Techcrunch.com"
         scrollView.delegate = self
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         setUpGUI()
@@ -72,12 +70,22 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setUpGUI() {
+        titleLabel.text = news.title
+        title = news.source
+        authorLabel.text = news.author
+        var paragraphString = ""
         news.paragraphs.forEach {
             let index = news.paragraphs.index(of: $0)
             var formattedParagraph = index != 0 ? "\n\n" : ""
             formattedParagraph.append($0)
-            textView.text.append(formattedParagraph)
+            paragraphString.append(formattedParagraph)
         }
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 12
+        let attributes = [NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 19)]
+        textView.attributedText = NSAttributedString(string: paragraphString, attributes: attributes)
+        textView.textContainerInset = .zero
+        textView.textContainer.lineFragmentPadding = 0
         bottomView.layer.shadowColor = UIColor.darkGray.cgColor
         bottomView.layer.shadowOffset = CGSize(width: 0, height: -1)
         bottomView.layer.shadowOpacity = 0.3

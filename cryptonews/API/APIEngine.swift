@@ -8,19 +8,34 @@ class APIEngine {
     static let ccnNewsUrl = "https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
     static let coinMarketCapUrl = "https://api.coinmarketcap.com/v1/ticker/"
     static let coinAdditionalData = "https://www.cryptocompare.com/api/data/coinlist/"
+    static let headlinesUrl1 = "https://newsapi.org/v2/top-headlines?q=bitcoin&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl2 = "https://newsapi.org/v2/top-headlines?q=blockchain&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl3 = "https://newsapi.org/v2/top-headlines?q=cryptocurrency&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl4 = "https://newsapi.org/v2/top-headlines?q=Vitalik%Buterin&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl5 = "https://newsapi.org/v2/top-headlines?q=decentralized&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
     
-    static func getCcnNews(completion: @escaping (_ news: [News]?, _ error: Error?) -> Void) {
-        Alamofire.request(ccnNewsUrl, method: .get).responseJSON { response in
-            switch response.result {
-            case .success:
-                let value = response.value as! [String:Any]
-                let news = News.importNewsFromDictionaryArray(dictionaries: value["articles"] as! [[String:Any]])
-                completion(news, nil)
-            case .failure(let error): completion(nil, error)
+    static func getAllNews(completion: @escaping (_ news: [News]?, _ error: Error?) -> Void) {
+        let urls = [ ccnNewsUrl, headlinesUrl1, headlinesUrl2, headlinesUrl3, headlinesUrl4, headlinesUrl5 ]
+        let dispatchGroup = DispatchGroup()
+        var news = [News]()
+        for url in urls {
+            dispatchGroup.enter()
+            Alamofire.request(url, method: .get).responseJSON { response in
+                switch response.result {
+                case .success:
+                    let value = response.value as! [String:Any]
+                    let fetchedNews = News.importNewsFromDictionaryArray(dictionaries: value["articles"] as! [[String:Any]])
+                    news.append(contentsOf: fetchedNews)
+                case .failure(let error): completion(nil, error)
+                }
+                dispatchGroup.leave()
             }
         }
+        dispatchGroup.notify(queue: .main) {
+            let removeDuplicates = Array(Set(news))
+            completion(removeDuplicates, nil)
+        }
     }
-    
     
     static func getNewsBodyForNews(news: News, completion: @escaping (_ news: News?, _ error: Error?) -> Void) {
         Alamofire.request(news.url).responseString { response in

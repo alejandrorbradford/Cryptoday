@@ -103,7 +103,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: Fetch
     @objc func fetchData() {
-        APIEngine.getCcnNews { [weak self] (news, error) in
+        APIEngine.getAllNews { [weak self] (news, error) in
             guard let strongSelf = self else { return }
             guard let news = news else { return }
             // TODO: Error handling
@@ -265,7 +265,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     func updateUI() {
         titleLabel.text = news!.title
-        publisher.text = news!.author
+        publisher.text = news!.source
         if let url = URL(string: news!.imageUrl) { imageView.setImage(url: url) }
         bookmarkButton.setImage(news!.isBookmarked ? #imageLiteral(resourceName: "bookmark-icon-filled") : #imageLiteral(resourceName: "bookmark-icon"), for: .normal)
     }

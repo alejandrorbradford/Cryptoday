@@ -14,6 +14,7 @@ class News: Object {
     @objc dynamic var publishedDate = Date(timeIntervalSince1970: 1)
     @objc dynamic var author = ""
     @objc dynamic var title = ""
+    @objc dynamic var source = ""
     @objc dynamic var shortDescription = ""
     @objc dynamic var url = ""
     @objc dynamic var imageUrl = ""
@@ -41,19 +42,23 @@ class News: Object {
     }
     
     static func createOrUpdateNewsFromDictionary(dictionary: [String:Any]) -> News {
-        let publishedDateString = dictionary["publishedAt"] as! String
-        guard let news = getOrCreateNewsWithID(newsID: publishedDateString) else { preconditionFailure() }
+        let title = dictionary["title"] as! String
+        guard let news = getOrCreateNewsWithID(newsID: title) else { preconditionFailure() }
         do {
             let realm = try Realm()
             realm.beginWrite()
-            news.author = dictionary["author"] as! String
-            news.title = dictionary["title"] as! String
+            news.title = title
+            if let author = dictionary["author"] as? String { news.author = author }
             news.shortDescription = dictionary["description"] as! String
             news.url = dictionary["url"] as! String
-            news.imageUrl = dictionary["urlToImage"] as! String
+            if let imageUrl = dictionary["urlToImage"] as? String { news.imageUrl = imageUrl }
             let dateFormatter = ISO8601DateFormatter()
+            let publishedDateString = dictionary["publishedAt"] as! String
             let creationDate = dateFormatter.date(from:publishedDateString)!
             news.publishedDate = creationDate
+            if let source = dictionary["source"] as? [String:Any] {
+                news.source = source["name"] as! String
+            }
             try realm.commitWrite()
         } catch {
             print(error)
