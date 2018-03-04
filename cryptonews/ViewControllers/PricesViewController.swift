@@ -14,15 +14,17 @@ enum TimeOptions {
     case oneHour, oneDay, sevenDays
 }
 
-class PricesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PricesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     @IBOutlet var tableView: UITableView!
     
     var selectedCrypto: Cryptocurrency!
     var allCryptos = [Cryptocurrency]()
+    var filteredCryptos = [Cryptocurrency]()
     
     var currentTime: TimeOptions = .oneDay
     var timeButton: UIBarButtonItem?
     var refresher: UIRefreshControl!
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,13 @@ class PricesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        
+        // Search Bar
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
         
         // Refresher
         refresher = UIRefreshControl()
@@ -63,12 +72,12 @@ class PricesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allCryptos.count
+        return isFiltering() ? filteredCryptos.count : allCryptos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CryptoTableViewCell", for: indexPath) as! CryptoTableViewCell
-        let crypto = allCryptos[indexPath.row]
+        let crypto = isFiltering() ? filteredCryptos[indexPath.row] : allCryptos[indexPath.row]
         cell.crypto = crypto
         cell.currentTime = currentTime
         return cell
@@ -95,6 +104,25 @@ class PricesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         tableView.reloadData()
         view.layoutIfNeeded()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    // Convenience
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        let searchLowerCase = searchText.lowercased()
+        filteredCryptos = allCryptos.filter { $0.name.lowercased().contains(searchLowerCase) || $0.symbol.lowercased().contains(searchLowerCase) }
+        tableView.reloadData()
     }
 }
 

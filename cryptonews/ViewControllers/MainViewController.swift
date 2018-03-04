@@ -7,7 +7,7 @@ protocol MainCollectionViewCellDelegate: class {
     func mainCelldidTappedOnShare(link: String)
 }
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MainCollectionViewCellDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MainCollectionViewCellDelegate, UISearchResultsUpdating {
     
     @IBOutlet var horizontalCollectionView: UICollectionView!
     @IBOutlet var collectionView: UICollectionView!
@@ -15,9 +15,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var refresher: UIRefreshControl!
     var bookmarkButton: UIBarButtonItem!
+    let searchController = UISearchController(searchResultsController: nil)
     
     var timer: Timer?
     var news = [News]()
+    var filteredNews = [News]()
     var coins = [Cryptocurrency]()
     
     override func viewDidLoad() {
@@ -28,11 +30,24 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         horizontalCollectionView.dataSource = self
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Latest News"
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        
+        // Search Bar
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        // Refresher
         refresher = UIRefreshControl()
         collectionView!.alwaysBounceVertical = true
         refresher.tintColor = .gray
         refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         collectionView!.addSubview(refresher)
+        
+        // Prices View
         bottomView.layer.shadowColor = UIColor.black.cgColor
         bottomView.layer.shadowOffset = CGSize(width: 1, height: -2)
         bottomView.layer.shadowOpacity = 0.3
@@ -50,6 +65,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = true
         setUpTimer()
     }
     
@@ -113,7 +129,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: Collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.collectionView {
-            let news = self.news[indexPath.row]
+            let news = isFiltering() ? self.filteredNews[indexPath.row] : self.news[indexPath.row]
             showNewsDetails(news: news)
         } else {
             let crypto = self.coins[indexPath.row]
@@ -124,7 +140,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.collectionView {
-            return news.count
+            return isFiltering() ? filteredNews.count : news.count
         } else {
             return coins.count
         }
@@ -133,7 +149,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.collectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
-            let news = self.news[indexPath.row]
+            let news = isFiltering() ? self.filteredNews[indexPath.row] : self.news[indexPath.row]
             cell.delegate = self
             cell.news = news
             return cell
@@ -185,6 +201,26 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func mainCelldidTappedOnShare(link: String) {
         showShareWithLink(link: link)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    
+    // Convenience
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        let searchLowerCase = searchText.lowercased()
+        filteredNews = news.filter { $0.title.lowercased().contains(searchLowerCase) || $0.shortDescription.lowercased().contains(searchLowerCase) }
+        collectionView.reloadData()
     }
 }
 
