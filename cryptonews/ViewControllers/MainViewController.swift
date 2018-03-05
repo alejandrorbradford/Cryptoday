@@ -135,7 +135,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let crypto = self.coins[indexPath.row]
             showPricesVC(with: crypto)
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

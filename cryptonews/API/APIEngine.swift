@@ -8,11 +8,11 @@ class APIEngine {
     static let ccnNewsUrl = "https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
     static let coinMarketCapUrl = "https://api.coinmarketcap.com/v1/ticker/"
     static let coinAdditionalData = "https://www.cryptocompare.com/api/data/coinlist/"
-    static let headlinesUrl1 = "https://newsapi.org/v2/top-headlines?q=bitcoin&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
-    static let headlinesUrl2 = "https://newsapi.org/v2/top-headlines?q=blockchain&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
-    static let headlinesUrl3 = "https://newsapi.org/v2/top-headlines?q=cryptocurrency&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
-    static let headlinesUrl4 = "https://newsapi.org/v2/top-headlines?q=Vitalik%Buterin&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
-    static let headlinesUrl5 = "https://newsapi.org/v2/top-headlines?q=decentralized&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl1 = "https://newsapi.org/v2/everything?q=bitcoin&sources=abc-news,bloomberg,cnn,financial-times,techradar,the-wall-street-journal,vice-news,fox-news,the-telegraph,the-washington-post,wired,business-insider,cbs-news,nbc-news,techcrunch,the-new-york-times,time,bbc-news,financial-post,fortune,the-verge,the-next-web,the-huffington-post&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl2 = "https://newsapi.org/v2/everything?q=blockchain&sources=abc-news,bloomberg,cnn,financial-times,techradar,the-wall-street-journal,vice-news,fox-news,the-telegraph,the-washington-post,wired,business-insider,cbs-news,nbc-news,techcrunch,the-new-york-times,time,bbc-news,financial-post,fortune,the-verge,the-next-web,the-huffington-post&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl3 = "https://newsapi.org/v2/everything?q=cryptocurrency&sources=abc-news,bloomberg,cnn,financial-times,techradar,the-wall-street-journal,vice-news,fox-news,the-telegraph,the-washington-post,wired,business-insider,cbs-news,nbc-news,techcrunch,the-new-york-times,time,bbc-news,financial-post,fortune,the-verge,the-next-web,the-huffington-post&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl4 = "https://newsapi.org/v2/everything?q=Vitalik Buterin&sources=abc-news,bloomberg,cnn,financial-times,techradar,the-wall-street-journal,vice-news,fox-news,the-telegraph,the-washington-post,wired,business-insider,cbs-news,nbc-news,techcrunch,the-new-york-times,time,bbc-news,financial-post,fortune,the-verge,the-next-web,the-huffington-post&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
+    static let headlinesUrl5 = "https://newsapi.org/v2/everything?q=decentralized technology&sources=abc-news,bloomberg,cnn,financial-times,techradar,the-wall-street-journal,vice-news,fox-news,the-telegraph,the-washington-post,wired,business-insider,cbs-news,nbc-news,techcrunch,the-new-york-times,time,bbc-news,financial-post,fortune,the-verge,the-next-web,the-huffington-post&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
     
     static func getAllNews(completion: @escaping (_ news: [News]?, _ error: Error?) -> Void) {
         let urls = [ ccnNewsUrl, headlinesUrl1, headlinesUrl2, headlinesUrl3, headlinesUrl4, headlinesUrl5 ]
