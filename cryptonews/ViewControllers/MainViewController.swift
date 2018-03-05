@@ -231,7 +231,8 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet var shadowView: UIView!
     @IBOutlet var secondShadowView: UIView!
     @IBOutlet var bookmarkButton: UIButton!
-
+    @IBOutlet var dateLabel: UILabel!
+    
     weak var delegate: MainCollectionViewCellDelegate?
     var news: News? { didSet { self.updateUI() } }
     
@@ -266,6 +267,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     func updateUI() {
         titleLabel.text = news!.title
         publisher.text = news!.source
+        dateLabel.text = news!.publishedDate.timeLessMediumFormattedDate()
         if let url = URL(string: news!.imageUrl) { imageView.setImage(url: url) }
         bookmarkButton.setImage(news!.isBookmarked ? #imageLiteral(resourceName: "bookmark-icon-filled") : #imageLiteral(resourceName: "bookmark-icon"), for: .normal)
     }

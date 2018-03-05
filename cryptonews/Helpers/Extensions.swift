@@ -68,3 +68,11 @@ extension NSMutableAttributedString {
         }
     }
 }
+
+extension Date {
+    func timeLessMediumFormattedDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, YYYY"
+        return formatter.string(from: self)
+    }
+}

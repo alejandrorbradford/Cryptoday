@@ -11,13 +11,13 @@ import UIKit
 
 class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet var dateLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var menuViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var bookmarkButton: UIButton!
     @IBOutlet var shareButton: UIButton!
     @IBOutlet var bottomView: UIView!
     @IBOutlet var textView: UITextView!
-    @IBOutlet var authorLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     var news: News!
     
@@ -72,7 +72,7 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     func setUpGUI() {
         titleLabel.text = news.title
         title = news.source
-        authorLabel.text = news.author
+        dateLabel.text = news.publishedDate.timeLessMediumFormattedDate()
         var paragraphString = ""
         news.paragraphs.forEach {
             let index = news.paragraphs.index(of: $0)
