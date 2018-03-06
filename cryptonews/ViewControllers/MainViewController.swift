@@ -218,7 +218,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         let searchLowerCase = searchText.lowercased()
-        filteredNews = news.filter { $0.title.lowercased().contains(searchLowerCase) || $0.shortDescription.lowercased().contains(searchLowerCase) }
+        filteredNews = news.filter { $0.title.lowercased().contains(searchLowerCase) || $0.shortDescription.lowercased().contains(searchLowerCase) || $0.source.lowercased().contains(searchLowerCase) }
         collectionView.reloadData()
     }
 }

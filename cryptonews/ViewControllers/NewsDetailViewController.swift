@@ -11,6 +11,7 @@ import UIKit
 
 class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet var textViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var menuViewBottomConstraint: NSLayoutConstraint!
@@ -31,6 +32,14 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         fetchDataIfNeeded()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if textView.frame.height < textView.contentSize.height {
+            textViewHeightConstraint.constant = textView.contentSize.height
+            textView.isScrollEnabled = false
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -39,7 +48,6 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
-
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -65,7 +73,7 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         guard news.paragraphs.count == 0 else { return }
         APIEngine.getNewsBodyForNews(news: news, completion: { [weak self] (news, error) in
             guard error == nil else { /* handle error */ return; }
-            self?.setUpGUI()
+            self?.setUpParagraphs()
         })
     }
     
@@ -73,28 +81,40 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         titleLabel.text = news.title
         title = news.source
         dateLabel.text = news.publishedDate.timeLessMediumFormattedDate()
-        var paragraphString = ""
-        news.paragraphs.forEach {
-            let index = news.paragraphs.index(of: $0)
-            var formattedParagraph = index != 0 ? "\n\n" : ""
-            formattedParagraph.append($0)
-            paragraphString.append(formattedParagraph)
-        }
-        let style = NSMutableParagraphStyle()
-        style.lineSpacing = 12
-        let attributes = [NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 19)]
-        textView.attributedText = NSAttributedString(string: paragraphString, attributes: attributes)
         textView.textContainerInset = .zero
         textView.textContainer.lineFragmentPadding = 0
+        setUpParagraphs()
         bottomView.layer.shadowColor = UIColor.darkGray.cgColor
         bottomView.layer.shadowOffset = CGSize(width: 0, height: -1)
         bottomView.layer.shadowOpacity = 0.3
         bottomView.layer.shadowRadius = 1.0
         updateBookmarkButton()
+        view.layoutIfNeeded()
     }
     
     func updateBookmarkButton() {
         bookmarkButton.setImage(news.isBookmarked ? #imageLiteral(resourceName: "bookmark-icon-filled") : #imageLiteral(resourceName: "bookmark-icon-bold"), for: .normal)
+    }
+    
+    func setUpParagraphs() {
+        var paragraphString = ""
+        news.paragraphs.forEach {
+            let index = news.paragraphs.index(of: $0)
+            var formattedParagraph = index != 0 ? "\n" : ""
+            formattedParagraph.append($0)
+            paragraphString.append(formattedParagraph)
+        }
+        news.paragraphs.forEach {
+            let index = news.paragraphs.index(of: $0)
+            var formattedParagraph = index != 0 ? "\n" : ""
+            formattedParagraph.append($0)
+            paragraphString.append(formattedParagraph)
+        }
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 6
+        let attributes = [NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 19)]
+        textView.attributedText = NSAttributedString(string: paragraphString, attributes: attributes)
+        DispatchQueue.main.async { self.view.setNeedsLayout() }
     }
     
     // MARK: Actions
