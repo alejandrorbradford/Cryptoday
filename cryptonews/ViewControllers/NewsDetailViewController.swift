@@ -11,14 +11,13 @@ import UIKit
 
 class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     
-    @IBOutlet var textViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var paragraphsLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var menuViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet var bookmarkButton: UIButton!
     @IBOutlet var shareButton: UIButton!
     @IBOutlet var bottomView: UIView!
-    @IBOutlet var textView: UITextView!
     @IBOutlet var titleLabel: UILabel!
     var news: News!
     
@@ -30,14 +29,6 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         setUpGUI()
         fetchDataIfNeeded()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if textView.frame.height < textView.contentSize.height {
-            textViewHeightConstraint.constant = textView.contentSize.height
-            textView.isScrollEnabled = false
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,8 +72,6 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         titleLabel.text = news.title
         title = news.source
         dateLabel.text = news.publishedDate.timeLessMediumFormattedDate()
-        textView.textContainerInset = .zero
-        textView.textContainer.lineFragmentPadding = 0
         setUpParagraphs()
         bottomView.layer.shadowColor = UIColor.darkGray.cgColor
         bottomView.layer.shadowOffset = CGSize(width: 0, height: -1)
@@ -113,7 +102,7 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 6
         let attributes = [NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 19)]
-        textView.attributedText = NSAttributedString(string: paragraphString, attributes: attributes)
+        paragraphsLabel.attributedText = NSAttributedString(string: paragraphString, attributes: attributes)
         DispatchQueue.main.async { self.view.setNeedsLayout() }
     }
     
