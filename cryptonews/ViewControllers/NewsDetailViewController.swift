@@ -63,7 +63,13 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     func fetchDataIfNeeded() {
         guard news.paragraphs.count == 0 else { return }
         APIEngine.getNewsBodyForNews(news: news, completion: { [weak self] (news, error) in
-            guard error == nil else { /* handle error */ return; }
+            guard let news = news else { /* handle error */ return; }
+            guard let strongSelf = self else { return }
+            // TODO: Better way to handle - not going back to empty vc
+            guard news.paragraphs.count > 0 else {
+                strongSelf.showWebViewController(news: news)
+                return
+            }
             self?.setUpParagraphs()
         })
     }
@@ -89,26 +95,21 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         var paragraphString = ""
         news.paragraphs.forEach {
             let index = news.paragraphs.index(of: $0)
-            var formattedParagraph = index != 0 ? "\n" : ""
-            formattedParagraph.append($0)
-            paragraphString.append(formattedParagraph)
-        }
-        news.paragraphs.forEach {
-            let index = news.paragraphs.index(of: $0)
-            var formattedParagraph = index != 0 ? "\n" : ""
+            var formattedParagraph = index != 0 ? "\n\n" : ""
             formattedParagraph.append($0)
             paragraphString.append(formattedParagraph)
         }
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 6
         let attributes = [NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 19)]
-        paragraphsLabel.attributedText = NSAttributedString(string: paragraphString, attributes: attributes)
-        DispatchQueue.main.async { self.view.setNeedsLayout() }
+        DispatchQueue.main.async {
+            self.paragraphsLabel.text = NSAttributedString(string: paragraphString, attributes: attributes).string
+        }
     }
     
     // MARK: Actions
     @IBAction func didTapVisitSite(_ sender: UIBarButtonItem) {
-        showWebViewController(url: news.url)
+        showWebViewController(news: news)
     }
     
     @IBAction func didTapBookmark(_ sender: UIButton) {

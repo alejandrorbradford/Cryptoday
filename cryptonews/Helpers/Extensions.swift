@@ -17,11 +17,11 @@ extension UIViewController {
         navigationController?.pushViewController(newsDetailVC, animated: true)
     }
     
-    func showWebViewController(url: String) {
+    func showWebViewController(news: News) {
         guard navigationController != nil else { print("Can't push to vc"); return }
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let webVC = storyBoard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        webVC.urlString = url
+        webVC.news = news
         navigationController?.pushViewController(webVC, animated: true)
     }
     
