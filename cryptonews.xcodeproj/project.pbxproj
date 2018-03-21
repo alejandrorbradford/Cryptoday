@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C2D2DCD206220F8003F0270 /* Sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D2DCC206220F8003F0270 /* Sentiment.swift */; };
+		8C8501902062243A002BAC28 /* CNObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C85018F2062243A002BAC28 /* CNObject.swift */; };
 		AE6EB3B1FDB304F498B682BF /* Pods_cryptonews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B6F96E1B6651B2A7038D89 /* Pods_cryptonews.framework */; };
 		F303D8D720383EB500CC0C8F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303D8D620383EB500CC0C8F /* WebViewController.swift */; };
 		F30B88032032D4060043A641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30B88022032D4060043A641 /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		58B6F96E1B6651B2A7038D89 /* Pods_cryptonews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptonews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C2D2DCC206220F8003F0270 /* Sentiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentiment.swift; sourceTree = "<group>"; };
+		8C85018F2062243A002BAC28 /* CNObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNObject.swift; sourceTree = "<group>"; };
 		9273D9E5BEC2F71484AF6F29 /* Pods-cryptonews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptonews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cryptonews/Pods-cryptonews.debug.xcconfig"; sourceTree = "<group>"; };
 		DE89A9FFBC4D2E0800FF6F99 /* Pods-cryptonews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptonews.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptonews/Pods-cryptonews.release.xcconfig"; sourceTree = "<group>"; };
 		F303D8D620383EB500CC0C8F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +71,14 @@
 				DE89A9FFBC4D2E0800FF6F99 /* Pods-cryptonews.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8C85019120622447002BAC28 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8C85018F2062243A002BAC28 /* CNObject.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		A281CFFEECF72EBC6222597A /* Frameworks */ = {
@@ -116,8 +128,10 @@
 		F338E5512032DC1400BE4A31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8C85019120622447002BAC28 /* Protocols */,
 				F338E5532032DC4100BE4A31 /* News.swift */,
 				F31B2701203EAF55001E4A11 /* Cryptocurrency.swift */,
+				8C2D2DCC206220F8003F0270 /* Sentiment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,8 +303,10 @@
 			files = (
 				F3C5CA4920396E3C00842CF3 /* BookmarksViewController.swift in Sources */,
 				F35AF9AB20380641002995F7 /* NewsDetailViewController.swift in Sources */,
+				8C2D2DCD206220F8003F0270 /* Sentiment.swift in Sources */,
 				F338E5572032E5A600BE4A31 /* Extensions.swift in Sources */,
 				F30B88052032D4060043A641 /* MainViewController.swift in Sources */,
+				8C8501902062243A002BAC28 /* CNObject.swift in Sources */,
 				F338E5502032DA6300BE4A31 /* APIEngine.swift in Sources */,
 				F303D8D720383EB500CC0C8F /* WebViewController.swift in Sources */,
 				F338E5542032DC4100BE4A31 /* News.swift in Sources */,
@@ -438,7 +454,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptonews/cryptonews.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UH9F5Z9972;
+				DEVELOPMENT_TEAM = VNFY2URN36;
 				INFOPLIST_FILE = cryptonews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryptoday.cryptoday;
@@ -457,7 +473,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptonews/cryptonews.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UH9F5Z9972;
+				DEVELOPMENT_TEAM = VNFY2URN36;
 				INFOPLIST_FILE = cryptonews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryptoday.cryptoday;

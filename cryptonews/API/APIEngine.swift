@@ -5,6 +5,10 @@ import RealmSwift
 
 class APIEngine {
     
+    //Sentiment API
+    static let textProcessingUrl = "http://text-processing.com/api/sentiment/"
+    
+    //News API
     static let ccnNewsUrl = "https://newsapi.org/v2/everything?sources=crypto-coins-news&apiKey=748b1a2bac844dfcb536e8d2cd888c43"
     static let coinMarketCapUrl = "https://api.coinmarketcap.com/v1/ticker/"
     static let coinAdditionalData = "https://www.cryptocompare.com/api/data/coinlist/"
@@ -98,4 +102,22 @@ class APIEngine {
         }
         
     }
+
+    static func getSentiment(for text: String, completion: @escaping (Sentiment?, Error?) -> ()) {
+        guard let url = URL(string: textProcessingUrl) else { completion(nil, nil); return }
+        let formattedText = text.replacingOccurrences(of: "\n", with: "")
+        Alamofire.request(url, method: .post, parameters: ["text":formattedText], encoding: URLEncoding.default, headers: nil).responseString { (response) in
+            response.result
+            .ifSuccess {
+                do {
+                    guard let dict = try? JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String: AnyObject] else { completion(nil, nil); return; }
+                    completion(Sentiment().importFromDictionary(dict: dict) as! Sentiment, nil)
+                } 
+            }
+            .ifFailure {
+                completion(nil,response.result.error)
+            }
+        }
+    }
+    
 }

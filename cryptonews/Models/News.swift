@@ -49,8 +49,8 @@ class News: Object {
             realm.beginWrite()
             news.title = title
             if let author = dictionary["author"] as? String { news.author = author }
-            news.shortDescription = dictionary["description"] as! String
-            news.url = dictionary["url"] as! String
+            if let shortDescription = dictionary["description"] as? String { news.shortDescription = shortDescription }
+            if let newsUrl = dictionary["url"] as? String { news.url = newsUrl }
             if let imageUrl = dictionary["urlToImage"] as? String { news.imageUrl = imageUrl }
             let dateFormatter = ISO8601DateFormatter()
             let publishedDateString = dictionary["publishedAt"] as! String

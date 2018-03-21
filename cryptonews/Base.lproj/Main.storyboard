@@ -343,8 +343,14 @@
                                         <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sentiment: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiN-wQ-EaG">
+                                        <rect key="frame" x="16" y="99" width="343" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iay-LL-Ip7">
-                                        <rect key="frame" x="16" y="115" width="343" height="23"/>
+                                        <rect key="frame" x="16" y="139" width="343" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -357,11 +363,14 @@
                                     <constraint firstAttribute="trailing" secondItem="Iay-LL-Ip7" secondAttribute="trailing" constant="16" id="EJi-df-BcU"/>
                                     <constraint firstItem="j9b-Je-iIC" firstAttribute="top" secondItem="a3Q-nW-KEW" secondAttribute="top" constant="20" id="G41-0w-chl"/>
                                     <constraint firstAttribute="trailing" secondItem="fAo-Uq-fNs" secondAttribute="trailing" constant="16" id="JxW-6c-otp"/>
+                                    <constraint firstItem="GiN-wQ-EaG" firstAttribute="leading" secondItem="a3Q-nW-KEW" secondAttribute="leading" constant="16" id="Nw6-Bq-5Hh"/>
                                     <constraint firstItem="Iay-LL-Ip7" firstAttribute="centerX" secondItem="a3Q-nW-KEW" secondAttribute="centerX" id="Qfn-bh-MSh"/>
                                     <constraint firstItem="fAo-Uq-fNs" firstAttribute="leading" secondItem="a3Q-nW-KEW" secondAttribute="leading" constant="16" id="SVZ-2Q-xf0"/>
                                     <constraint firstItem="j9b-Je-iIC" firstAttribute="leading" secondItem="a3Q-nW-KEW" secondAttribute="leading" constant="16" id="Yb1-R6-87W"/>
                                     <constraint firstItem="Iay-LL-Ip7" firstAttribute="leading" secondItem="a3Q-nW-KEW" secondAttribute="leading" constant="16" id="dAo-da-RpE"/>
-                                    <constraint firstItem="Iay-LL-Ip7" firstAttribute="top" secondItem="fAo-Uq-fNs" secondAttribute="bottom" constant="24" id="ttL-5A-Whk"/>
+                                    <constraint firstAttribute="trailing" secondItem="GiN-wQ-EaG" secondAttribute="trailing" constant="16" id="lRL-ni-mTe"/>
+                                    <constraint firstItem="Iay-LL-Ip7" firstAttribute="top" secondItem="GiN-wQ-EaG" secondAttribute="bottom" constant="17" id="ttL-5A-Whk"/>
+                                    <constraint firstItem="GiN-wQ-EaG" firstAttribute="top" secondItem="fAo-Uq-fNs" secondAttribute="bottom" constant="8" id="uGn-Ow-sI8"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eR0-9t-Fnk">
@@ -433,6 +442,7 @@
                         <outlet property="menuViewBottomConstraint" destination="yP9-Rw-x7X" id="r7O-7N-Vd3"/>
                         <outlet property="paragraphsLabel" destination="Iay-LL-Ip7" id="W1k-Pg-YzS"/>
                         <outlet property="scrollView" destination="a3Q-nW-KEW" id="deK-qe-lU9"/>
+                        <outlet property="sentimentLabel" destination="GiN-wQ-EaG" id="I4h-7x-qUn"/>
                         <outlet property="shareButton" destination="Wcg-Uo-Bo2" id="7tt-Lc-aed"/>
                         <outlet property="titleLabel" destination="j9b-Je-iIC" id="aUo-Rg-Sgz"/>
                     </connections>

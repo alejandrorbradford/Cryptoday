@@ -11,6 +11,7 @@ import UIKit
 
 class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet var sentimentLabel: UILabel!
     @IBOutlet var paragraphsLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
@@ -91,6 +92,15 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         bookmarkButton.setImage(news.isBookmarked ? #imageLiteral(resourceName: "bookmark-icon-filled") : #imageLiteral(resourceName: "bookmark-icon-bold"), for: .normal)
     }
     
+    func updateSentimentLabel(for sentiment: Sentiment) {
+        let sentimentLabel = "Sentiment: "
+        let attr = NSMutableAttributedString(string: sentimentLabel)
+        attr.append(sentiment.getAttributedTextForSentiment())
+        DispatchQueue.main.async {
+            self.sentimentLabel.attributedText = attr
+        }
+    }
+    
     func setUpParagraphs() {
         var paragraphString = ""
         news.paragraphs.forEach {
@@ -102,8 +112,15 @@ class NewsDetailViewController: UIViewController, UIScrollViewDelegate {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 6
         let attributes = [NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 19)]
+        if paragraphString.count > 0 {
+            APIEngine.getSentiment(for: paragraphString, completion: { (sentiment, error) in
+                guard let sentiment = sentiment else { return; }
+                self.updateSentimentLabel(for: sentiment)
+            })
+        }
         DispatchQueue.main.async {
             self.paragraphsLabel.text = NSAttributedString(string: paragraphString, attributes: attributes).string
+            
         }
     }
     
