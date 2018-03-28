@@ -77,9 +77,9 @@ class Cryptocurrency: Object {
         crypto.marketCap = dictionary["market_cap_usd"] as! String
         crypto.availableSupply = dictionary["available_supply"] as! String
         crypto.totalSupply = dictionary["total_supply"] as! String
-        crypto.percentageChange1h = dictionary["percent_change_1h"] as! String
-        crypto.percentageChange24h = dictionary["percent_change_24h"] as! String
-        crypto.percentageChange7d = dictionary["percent_change_7d"] as! String
+        if let percentage1h = dictionary["percent_change_1h"] as? String { crypto.percentageChange1h = percentage1h }
+        if let percentage24h = dictionary["percent_change_24h"] as? String { crypto.percentageChange24h = percentage24h }
+        if let percentage7d = dictionary["percent_change_7d"] as? String { crypto.percentageChange7d  = percentage7d }
         let lastUpdatedString = dictionary["last_updated"] as! String
         let lastUpdatedDouble = NumberFormatter().number(from: lastUpdatedString)?.doubleValue
         crypto.lastUpdated = Date(timeIntervalSince1970: lastUpdatedDouble!)
